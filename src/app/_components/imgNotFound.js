@@ -1,0 +1,1 @@
+export const imgNotFound = '/img/imgNotFound.jpg'
