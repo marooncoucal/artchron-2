@@ -1,5 +1,12 @@
-import True from "@/app/_components/games/True";
+import UseTransform from "@/app/_components/games/motion-swipe-example"
+import True from "@/app/_components/games/True"
+import TrueMotion from "@/app/_components/games/True-motion"
 
 export default function TruePage() {
-  return <True />;
+  return (
+    <div className="truePage h-full w-full">
+      <TrueMotion />
+      <UseTransform/>
+    </div>
+  )
 }

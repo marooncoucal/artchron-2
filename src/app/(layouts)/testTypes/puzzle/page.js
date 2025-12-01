@@ -19,8 +19,8 @@ const images = [
 
 export default function PuzzlePage() {
   return (
-    <div className="flex justify-center items-center h-[100vh]"> 
-      <div className='flex flex-col justify-center items-center gap-2 h-[100vh] w-full max-w-md mx-auto px-4 py-6 border border-black'>
+    <div className="flex justify-center items-center h-screen"> 
+      <div className='flex flex-col justify-center items-center gap-2 h-screen w-full max-w-md mx-auto px-4 py-6 border border-black'>
         <div className="font-bold text-2xl">Соберите картину из фрагментов</div>
         <div>
           <PuzzleBoard images={images} imageWidth={119} imageHeight={64} width={3} height={4} />

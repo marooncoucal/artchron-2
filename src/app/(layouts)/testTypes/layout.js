@@ -6,7 +6,7 @@ export default function TesTypesLayout({children}){
     return(
         <section className="">
             <HeaderNav/>
-            <div className="h-[calc(100svh-50px)] pt-[50px]">{children}</div>
+            <div className="h-[calc(100svh-50px)] pt-[0px]">{children}</div>
         </section>
     )
 }
