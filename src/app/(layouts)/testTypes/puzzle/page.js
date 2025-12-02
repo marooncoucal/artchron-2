@@ -1,20 +1,18 @@
 import PuzzleBoard from "@/app/_components/games/Puzzle"
 
-
-
 const images = [
-  { src: "/01.jpg"},
-  { src: "/02.jpg"},
-  { src: "/03.jpg"},
-  { src: "/04.jpg"},
-  { src: "/05.jpg"},
-  { src: "/06.jpg"},
-  { src: "/07.jpg"},
-  { src: "/08.jpg"},
-  { src: "/09.jpg"},
-  { src: "/10.jpg"},
-  { src: "/11.jpg"},
-  { src: "/12.jpg"}
+  { src: "/testImgs/puzzle1/01.jpg"},
+  { src: "/testImgs/puzzle1//02.jpg"},
+  { src: "/testImgs/puzzle1//03.jpg"},
+  { src: "/testImgs/puzzle1//04.jpg"},
+  { src: "/testImgs/puzzle1//05.jpg"},
+  { src: "/testImgs/puzzle1//06.jpg"},
+  { src: "/testImgs/puzzle1//07.jpg"},
+  { src: "/testImgs/puzzle1//08.jpg"},
+  { src: "/testImgs/puzzle1//09.jpg"},
+  { src: "/testImgs/puzzle1//10.jpg"},
+  { src: "/testImgs/puzzle1//11.jpg"},
+  { src: "/testImgs/puzzle1//12.jpg"}
 ]
 
 export default function PuzzlePage() {

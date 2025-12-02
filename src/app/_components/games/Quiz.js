@@ -8,7 +8,7 @@ const initialQuests = [
     {
         type: "group",
         text: "Вопрос 1",
-        image: "/AH_1.png",
+        image: "/testImgs/quiz1/AH_1.png",
         subquestions: [
             {
                 label: "Автор",
@@ -30,7 +30,7 @@ const initialQuests = [
     {
         type: "group",
         text: "Вопрос 2",
-        image: "/AH_2.png",
+        image: "/testImgs/quiz1/AH_2.jpg",
         subquestions: [
             {
                 label: "Автор",
