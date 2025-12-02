@@ -24,6 +24,10 @@ export default function MainPage1() {
       <div className="flex flex-col gap-12 items-center bg-white w-full rounded-t-3xl pt-8 pb-20">
         <div className="flex gap-4 px-5">
         <BlackButtonTest1 link={"/testTypes/true"}>правда ложь</BlackButtonTest1>
+        <BlackButtonTest1 link={"/testTypes/swipeSelect"}>swipe select</BlackButtonTest1>
+        <BlackButtonTest1 link={"/categories/sections/topics/resultScreen"}>экран рез теста</BlackButtonTest1>
+        </div>
+        <div className="flex gap-4 px-5">
         <BlackButtonTest1 link={"/testTypes/quiz"}>вопросы тест</BlackButtonTest1>
         <BlackButtonTest1 link={"/testTypes/podbor"}>подбор</BlackButtonTest1>
         <BlackButtonTest1 link={"/testTypes/puzzle"}>пазл</BlackButtonTest1>
