@@ -38,8 +38,8 @@ export default function TrueMotion() {
 
   const motionX = useMotionValue(0);
   const motionY = useMotionValue(0);
-  const greenOverlayOpacity = useTransform(motionX, [0, 120], [0, 0.7]);
-  const redOverlayOpacity = useTransform(motionX, [-120, 0], [0.7, 0]);
+  const greenOverlayOpacity = useTransform(motionX, [0, 100], [0, 0.7]);
+  const redOverlayOpacity = useTransform(motionX, [-100, 0], [0.7, 0]);
 
   const handleAnswer = (answer) => {
     setSelected(answer);
@@ -49,7 +49,8 @@ export default function TrueMotion() {
   const handleDragEnd = (event, info) => {
     const dragDistance = info.offset.x // track drag distance
     const threshold = 200 // trigger answer px
-    if (!showExplanation && !isAnimating) {
+    // answer unchangable + isn't scrollung next q
+    if (!showExplanation && !isAnimating) { 
       if (dragDistance > threshold) {
         handleAnswer(true)
       } else if (dragDistance < -threshold) {
@@ -73,7 +74,7 @@ export default function TrueMotion() {
   const isCorrect = selected === current.isTrue;
 
   return (
-    <div className="relative w-full h-full flex flex-col items-center">
+    <div className="relative w-full h-full flex flex-col items-center pt-4">
       {/* load line */}
       <div className="w-full h-[18px] flex items-center gap-2 mb-7 px-5">
         <button className="w-5 h-5 text-[20px] text-gray-400 leading-none">
@@ -116,20 +117,19 @@ export default function TrueMotion() {
               height={600}
               className="w-full h-full object-cover object-center rounded-2xl pointer-events-none"
             />
-            {/* Overlay layers */}
+            {/* overlays */}
             <motion.div
               style={{ opacity: greenOverlayOpacity }}
-              className="
+              className={`
                 absolute top-0 left-0 right-0 w-full h-full pointer-events-none rounded-2xl
                 flex items-center justify-center text-6xl text-white bg-black/70
-                "
+                `}
             >Правда</motion.div>
             <motion.div
               style={{ opacity: redOverlayOpacity }}
-              className="
-                absolute top-0 left-0 w-full h-full rounded-2xl pointer-events-none
+              className={`absolute top-0 left-0 w-full h-full rounded-2xl pointer-events-none
                 flex items-center justify-center text-6xl text-white bg-black/70
-              "
+              `}
             >Ложь</motion.div>
           </motion.div>
 
@@ -148,8 +148,8 @@ export default function TrueMotion() {
         <div
           className={`absolute bottom-5 left-5 right-5 flex justify-center gap-4`}
         >
-          {/* <Button onClick={() => handleAnswer(false)}>ложь</Button> */}
-          {/* <Button onClick={() => handleAnswer(true)}>правда</Button> */}
+          <Button onClick={() => handleAnswer(false)}>ложь</Button>
+          <Button onClick={() => handleAnswer(true)}>правда</Button>
         </div>
       ) : (
         <AnswerBoxBottom
