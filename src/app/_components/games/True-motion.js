@@ -29,22 +29,22 @@ const questions = [
 ];
 
 export default function TrueMotion() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [selected, setSelected] = useState(null);
-  const [showExplanation, setShowExplanation] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [selected, setSelected] = useState(null)
+  const [showExplanation, setShowExplanation] = useState(false)
+  const [isAnimating, setIsAnimating] = useState(false)
 
-  const current = questions[currentIndex];
+  const current = questions[currentIndex]
 
-  const motionX = useMotionValue(0);
-  const motionY = useMotionValue(0);
-  const greenOverlayOpacity = useTransform(motionX, [0, 100], [0, 0.7]);
-  const redOverlayOpacity = useTransform(motionX, [-100, 0], [0.7, 0]);
+  const motionX = useMotionValue(0)
+  const motionY = useMotionValue(0)
+  const greenOverlayOpacity = useTransform(motionX, [0, 100], [0, 0.7])
+  const redOverlayOpacity = useTransform(motionX, [-100, 0], [0.7, 0])
 
   const handleAnswer = (answer) => {
-    setSelected(answer);
-    setShowExplanation(true);
-  };
+    setSelected(answer)
+    setShowExplanation(true)
+  }
 
   const handleDragEnd = (event, info) => {
     const dragDistance = info.offset.x // track drag distance
@@ -62,13 +62,13 @@ export default function TrueMotion() {
   }
 
   const handleNext = () => {
-    setIsAnimating(true);
+    setIsAnimating(true)
     setTimeout(() => {
-      setSelected(null);
-      setShowExplanation(false);
-      setCurrentIndex((prev) => (prev + 1) % questions.length);
-      setIsAnimating(false);
-    }, 300);
+      setSelected(null)
+      setShowExplanation(false)
+      setCurrentIndex((prev) => (prev + 1) % questions.length)
+      setIsAnimating(false)
+    }, 300)
   };
 
   const isCorrect = selected === current.isTrue;
@@ -83,9 +83,7 @@ export default function TrueMotion() {
         <div className="flex-1 h-full border-2 border-[#e5e5ea] bg-gray-50 rounded-full">
           <div
             className="h-full bg-gray-300 transition-all duration-500"
-            style={{
-              width: `${((currentIndex + 1) / questions.length) * 100 - 20}%`,
-            }}
+            style={{ width: `${((currentIndex + 1) / questions.length) * 100 - 20}%`}}
           ></div>
         </div>
       </div>
@@ -104,7 +102,7 @@ export default function TrueMotion() {
           </p>
           <motion.div
             drag
-            dragConstraints={{ left: -270, right: 270, top: -10, bottom: 100 }}
+            dragConstraints={{ left: -270, right: 270, top: -20, bottom: 100 }}
             dragElastic={0.1}
             style={{ x: motionX, y: motionY }}
             onDragEnd={handleDragEnd}
@@ -132,15 +130,6 @@ export default function TrueMotion() {
               `}
             >Ложь</motion.div>
           </motion.div>
-
-          {/* <motion.div
-            drag="x"
-            className="h-full w-[80%] pb-30 mx-auto drop-shadow-lg drop-shadow-gray-500"
-          >
-            <div
-              className="w-full h-full bg-red-400 rounded-2xl"
-            />
-          </motion.div> */}
         </div>
       </div>
 
