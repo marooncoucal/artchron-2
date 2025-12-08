@@ -7,79 +7,75 @@ function distance(x1, y1, x2, y2) {
   return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2))
 }
 
+function shuffle(arr) {
+  return [...arr].sort(() => Math.random() - 0.5)
+}
+
 export default function SortSections1({inputInfo}) {
-  const images = [...inputInfo.author1.answers, ...inputInfo.author2.answers]
+  const imagesAll = [...inputInfo.author1.answers, ...inputInfo.author2.answers]
+  const images = shuffle(imagesAll)
   const author1 = inputInfo.author1.name
   const author2 = inputInfo.author2.name
   return (
     <div className="h-full w-full flex flex-col gap-4">
-        <div className='h-full w-full gap-4 flex flex-col pb-10'>
-            <div className='flex flex-1 justify-center items-center text-gray-400 border-2 rounded-xl border-dashed border-gray-400'>{author1}</div>
-            <div className='flex flex-1 justify-center items-center text-gray-400 border-2 rounded-xl border-dashed border-gray-400'>{author2}</div>
+        <div className='h-full w-full gap-4 flex flex-col pb-40'>
+            <div className='AnswerArea1 flex flex-1 justify-center items-center text-gray-400 border-2 rounded-xl border-dashed border-gray-400'>{author1}</div>
+            <div className='AnswerArea2 flex flex-1 justify-center items-center text-gray-400 border-2 rounded-xl border-dashed border-gray-400'>{author2}</div>
         </div>
 
-        <div className='ImgSpawnArea flex gap-3'>
+        <div className='ImgSpawnArea absolute bottom-6'>
             {
-                images.map((img)=>{
+                images.map((img, index)=>{
                     return (
-                        <Painting key={img.src} img={img} />
+                        <Painting key={img.src} img={img} initialX={index*100} />
                     )
                 })
             }
         </div>
 
-        {/* appears after imagesAll.length is empty */}
-        {/* <ButtonCheck /> */}
+        {/* { (imagesAll.length is empty) && <ButtonCheck /> } */}
+        {/* <ButtonCheck />  */}
     </div>
   )
 }
 
 
-function Painting({img}){
+function Painting({img, initialX}){
 
-    let dragParams = useRef({drag: false})
+    const x = useMotionValue(initialX)
+    const y = useMotionValue(0)
 
-    function OnStartDrag(){
-        if (!p.InPlace) {
-            drag = true
-        }
-    }
-    function OnDrag(){
-        if (drag){
-            console.log('drag')
-        }
-    }
-    function OnStopDrag(){
-        // if (inArea) snap to Area
-        // else snap to origin 
-        if (d<10) {
-            // if (AnswerArea1 || AnswerArea2) {
-                // if (AnswerArea1) {
-                    // snap to justify-start items-center
-                    // +1 to p1 array
-                // }
-                // if (AnswerArea2) {
-                    // snap to justify-start items-center
-                    // +1 to p2 array
-                // }
+    // onDragEnd <Painting/> — if (distance from AnswerArea<10) {snap to flexbox of AnswerArea}, else {animate() back to original postion}
+    const handleDragEnd = (event, info) => {
+    // if (distance from AnswerArea<10) {
+        // if (AnswerArea1 || AnswerArea2) {
+            // if (AnswerArea1) {
+                // snap to justify-start items-center
             // }
-            animate(motionX, 0) // snap to origin X
-            animate(motionY, 0) // snap to origin Y
-        }
-        drag = false
+            // if (AnswerArea2) {
+                // snap to justify-start items-center
+            // }
+        // }
+      // if <Painting/> doesn't snap to any AnswerArea — return to original position
+      animate(x, initialX, { type: "spring", stiffness: 300, damping: 30 })
+      animate(y, 0, { type: "spring", stiffness: 300, damping: 30 })
     }
 
     return(
         <motion.div 
             drag
-            className="w-40 aspect-auto overflow-hidden"
+            className={`w-30 aspect-auto absolute bottom-0 overflow-hidden rounded-md drop-shadow-2xl`}
+            // style={{ translateX: `${transX * 100}px` }}
+            style={{ x, y}}
+            whileDrag={{ scale: 1.5 }}
+            onDragEnd={handleDragEnd}
         >
             <Image
                 src={img.src}
                 alt="question visual"
-                width={600}
-                height={600}
-                className="w-full h-full object-cover object-center select-none pointer-events-none"
+                width={300}
+                height={300}
+                className="w-30 aspect-auto select-none pointer-events-none"
             />
         </motion.div>
     )
@@ -95,7 +91,7 @@ function ButtonCheck({inPlaceCount, images}){
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current)
         }
-        // if (p1 = img1.length && p2 = img2.length) {
+        // if (img.src inside container AnswerArea1 all match the src of in inputInfo.author1.answers && img.src inside container AnswerArea2 all match the src of in inputInfo.author2.answers) then {in <ButtonCheck/> setCheckStatus("correct") setButtonText("Верно")} else {in <ButtonCheck/> setCheckStatus("wrong") ...rest of the code}
         if (inPlaceCount === images.length) {
             setCheckStatus("correct")
             setButtonText("Верно")
