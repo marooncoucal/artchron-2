@@ -5,26 +5,22 @@ import { motion, useMotionValue, useTransform, animate } from "motion/react";
 
 const questions = [
   {
-    title:
-      "Картину «Чёрный квадрат» Казимир Малевич впервые представил на выставке в Париже в 1915 году.",
+    title: "Картину «Чёрный квадрат» Казимир Малевич впервые представил на выставке в Париже в 1915 году.",
     image: "/testImgs/trueTest1/black-square.jpg",
     isTrue: false,
-    explanation:
-      "Картина была представлена в 1915 году, но не в Париже, а в Петрограде.",
+    explanation: "Картина была представлена в 1915 году, но не в Париже, а в Петрограде.",
   },
   {
     title: "Винсент Ван Гог отрезал себе ухо.",
     image: "/testImgs/trueTest1/vangogh.jpg",
     isTrue: true,
-    explanation:
-      "Это правда — Ван Гог отрезал себе часть уха в 1888 году во Франции.",
+    explanation: "Это правда — Ван Гог отрезал себе часть уха в 1888 году во Франции.",
   },
   {
     title: "Звёздную ночь написал Микеланджело.",
     image: "/testImgs/trueTest1/vangogh1.jpg",
     isTrue: false,
-    explanation:
-      "Это ложь — «Звёздная ночь» была написана Винсентом Ван Гогом в 1889 году.",
+    explanation: "Это ложь — «Звёздная ночь» была написана Винсентом Ван Гогом в 1889 году.",
   },
 ];
 
@@ -172,15 +168,10 @@ function AnswerBoxBottom({ isCorrect, answer, onClick }) {
       className={`absolute bottom-0 left-0 right-0 z-10 flex justify-center`}
     >
       <div
-        className="w-full rounded-t-[10px] bg-white pt-4 px-4 text-left
-        drop-shadow-[0px_-10px_10px_rgba(0,0,0,0.15)]"
+        className="w-full rounded-t-[10px] bg-white pt-4 px-4 text-left drop-shadow-[0px_-10px_10px_rgba(0,0,0,0.15)]"
       >
         <div className="flex items-center gap-2 mb-2">
-          <span
-            className={`text-[18px] font-semibold ${
-              isCorrect ? "text-[#4CAF50]" : "text-[#E46F2B]"
-            }`}
-          >
+          <span className={`text-[18px] font-semibold ${ isCorrect ? "text-[#4CAF50]" : "text-[#E46F2B]"}`}>
             {isCorrect ? "✓ Верно" : "× Неверно"}
           </span>
         </div>
@@ -189,9 +180,7 @@ function AnswerBoxBottom({ isCorrect, answer, onClick }) {
         </p>
         <button
           onClick={onClick}
-          className={`w-full h-[45px] ${
-            isCorrect ? "bg-[#4CAF50]" : "bg-[#E46F2B]"
-          } text-white font-bold mb-4`}
+          className={`w-full h-[45px] ${ isCorrect ? "bg-[#4CAF50]" : "bg-[#E46F2B]"} text-white font-bold mb-4`}
         >
           ПОНЯТНО
         </button>

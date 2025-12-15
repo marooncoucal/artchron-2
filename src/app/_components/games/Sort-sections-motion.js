@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react"
+import { use, useEffect, useRef, useState } from "react"
 import { motion, useMotionValue, useTransform, animate } from "motion/react";
 
 function distance(x1, y1, x2, y2) {
@@ -12,22 +12,45 @@ function shuffle(arr) {
 }
 
 export default function SortSections1({inputInfo}) {
-  const imagesAll = [...inputInfo.author1.answers, ...inputInfo.author2.answers]
-  const images = shuffle(imagesAll)
-  const author1 = inputInfo.author1.name
-  const author2 = inputInfo.author2.name
+//   const imagesAll = [...inputInfo.author1.answers, ...inputInfo.author2.answers]
+  const imagesAll = inputInfo.questions
+  const [images, setImages] = useState([])
+  useEffect(()=>{
+    setImages(shuffle(imagesAll))
+  },[])
+
+
+//   const author1 = inputInfo.author1.name
+//   const author2 = inputInfo.author2.name
+
+  const author1 = inputInfo.sortSections.author1
+  const author2 = inputInfo.sortSections.author2
+
+  const area1Ref = useRef(null)
+  const area2Ref = useRef(null)
+  const spawnRef = useRef(null)
+
+  const [placed, setPlaced] = useState({}) // author1 | author2 | null
+
+  const handleDrop = (src, x, y, resetFn) => {
+    const rect1 = area1Ref.current.getBoundingClientRect()
+    const rect2 = area2Ref.current.getBoundingClientRect()
+    const in1 = x > rect1.left && x < rect1.right && y > rect1.top && y < rect1.bottom
+    const in2 = x > rect2.left && x < rect2.right && y > rect2.top && y < rect2.bottom
+  }
+
   return (
     <div className="h-full w-full flex flex-col gap-4">
         <div className='h-full w-full gap-4 flex flex-col pb-40'>
-            <div className='AnswerArea1 flex flex-1 justify-center items-center text-gray-400 border-2 rounded-xl border-dashed border-gray-400'>{author1}</div>
-            <div className='AnswerArea2 flex flex-1 justify-center items-center text-gray-400 border-2 rounded-xl border-dashed border-gray-400'>{author2}</div>
+            <div ref={area1Ref} className='AnswerArea1 relative flex flex-1 justify-center items-center text-gray-400 border-2 rounded-xl border-dashed border-gray-400'><div className="absolute z-10 text-center select-none pointer-events-none">{author1}</div></div>
+            <div ref={area2Ref} className='AnswerArea2 flex flex-1 justify-center items-center text-gray-400 border-2 rounded-xl border-dashed border-gray-400'><div className="absolute z-10 text-center">{author2}</div></div>
         </div>
 
-        <div className='ImgSpawnArea absolute bottom-6'>
+        <div ref={spawnRef} className='SpawnArea absolute bottom-30 mx-auto'>
             {
                 images.map((img, index)=>{
                     return (
-                        <Painting key={img.src} img={img} initialX={index*100} />
+                        <Painting key={img.src} img={img} area1Ref={area1Ref} area2Ref={area2Ref} />
                     )
                 })
             }
@@ -40,14 +63,21 @@ export default function SortSections1({inputInfo}) {
 }
 
 
-function Painting({img, initialX}){
+function Painting({img, area1Ref, area2Ref}){
 
-    const x = useMotionValue(initialX)
+    const x = useMotionValue(0)
     const y = useMotionValue(0)
+    const scale = useMotionValue(1)
+    const ref = useRef(null)
+
+    const areas = [
+        area1Ref.current?.getBoundingClientRect(),
+        area2Ref.current?.getBoundingClientRect()
+    ].filter(Boolean)
+    let targetArea = null
 
     // onDragEnd <Painting/> — if (distance from AnswerArea<10) {snap to flexbox of AnswerArea}, else {animate() back to original postion}
-    const handleDragEnd = (event, info) => {
-    // if (distance from AnswerArea<10) {
+        // if (distance from AnswerArea<10) {
         // if (AnswerArea1 || AnswerArea2) {
             // if (AnswerArea1) {
                 // snap to justify-start items-center
@@ -56,26 +86,50 @@ function Painting({img, initialX}){
                 // snap to justify-start items-center
             // }
         // }
-      // if <Painting/> doesn't snap to any AnswerArea — return to original position
-      animate(x, initialX, { type: "spring", stiffness: 300, damping: 30 })
-      animate(y, 0, { type: "spring", stiffness: 300, damping: 30 })
+    const handleDragEnd = (event, info) => {
+        const area = area1Ref.current?.getBoundingClientRect()
+        const imgRect = ref.current?.getBoundingClientRect()
+        if (!area || !imgRect) return
+
+        const imgCenterX = imgRect.left + imgRect.width / 2
+        const imgCenterY = imgRect.top + imgRect.height / 2
+        const isInside = imgCenterX > area.left && imgCenterX < area.right && imgCenterY > area.top && imgCenterY < area.bottom
+
+        if (isInside){
+            const targetX = area.left + area.width / 2 - imgRect.left - imgRect.width / 2
+            const targetY = area.top + area.height / 2 - imgRect.top - imgRect.height / 2
+            animate(x, x.get() + targetX)
+            animate(y, y.get() + targetY)
+            scale.set(0.4)
+        } else {
+            // if <Painting/> doesn't snap to any AnswerArea — return to original position
+            animate(x, 0, { type: "spring", stiffness: 300, damping: 30 })
+            animate(y, 0, { type: "spring", stiffness: 300, damping: 30 })
+            scale.set(1)
+        }
+    }
+
+    function handleDragStart() {
+        scale.set(0.8)
     }
 
     return(
         <motion.div 
             drag
-            className={`w-30 aspect-auto absolute bottom-0 overflow-hidden rounded-md drop-shadow-2xl`}
+            dragMomentum={0}
+            className={`w-100 aspect-auto absolute top-0 overflow-hidden rounded-md drop-shadow-md drop-shadow-black`}
             // style={{ translateX: `${transX * 100}px` }}
-            style={{ x, y}}
-            whileDrag={{ scale: 1.5 }}
+            style={{ x, y, scale }}
+            onDragStart={handleDragStart}
             onDragEnd={handleDragEnd}
+            ref={ref}
         >
             <Image
                 src={img.src}
                 alt="question visual"
                 width={300}
                 height={300}
-                className="w-30 aspect-auto select-none pointer-events-none"
+                className="w-full aspect-auto select-none pointer-events-none"
             />
         </motion.div>
     )
