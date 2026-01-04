@@ -1,1 +1,72 @@
-@import "tailwindcss"
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@theme {
+    --font-benzin: "Benzin", sans-serif; 
+    --font-sf-pro-text: "SF-Pro-Text", sans-serif; 
+    --font-ubuntu-mono: "Ubuntu-Mono", sans-serif; 
+
+    --color-ac-orange-600: #FF684E;
+    --color-ac-yellow-400: #F4C469;
+    --color-ac-lime-300: #99DE59;
+    --color-ac-green-800: #40864A;
+    --color-ac-gray-6B: #6B6B6B;
+}
+
+@font-face {
+  font-family: Benzin;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Benzin-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: Benzin;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/Benzin-Medium.woff") format("woff");
+}
+@font-face {
+  font-family: SF-Pro-Text;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/SFProText-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: SF-Pro-Text;
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/SFProText-RegularItalic.ttf") format("truetype");
+}
+@font-face {
+  font-family: Ubuntu-Mono;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/UbuntuMono-Regular.ttf") format("woff");
+}
+
+
+@layer components {
+    .flex-center{
+        @apply flex items-center justify-center
+    }
+    .font-h3{
+        @apply font-benzin text-ac-gray-6B text-[28px] leading-none;
+    }
+    .font-main-text{
+        @apply font-sf-pro-text text-[14px] leading-none;
+    }
+    .font-button{
+        @apply font-ubuntu-mono uppercase text-[20px] leading-none text-center;
+    }
+    .btn-1{
+        @apply py-2 rounded-full w-full;
+    }
+}

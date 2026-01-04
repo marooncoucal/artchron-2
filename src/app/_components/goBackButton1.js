@@ -1,15 +1,13 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { ArrowBack, ExitButton } from './icons'
 
 export default function BackButton() {
   const router = useRouter()
   return (
-    <div 
-      className='cursor-pointer bg-white border py-1 px-3 flex justify-center items-center max-w-20' 
-      onClick={() => router.back()}
-    >
-      назад
-    </div>
-  );
+    <button type="button" className='cursor-pointer select-none' onClick={() => router.back()}>
+      <ArrowBack />
+    </button>
+  )
 }

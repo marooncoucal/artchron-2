@@ -7,12 +7,35 @@ function shuffle(arr) {
   return [...arr].sort(() => Math.random() - 0.5);
 }
 
-export default function SortSections1({ inputInfo }) {
-  const allImages = shuffle([
-    ...inputInfo.author1.answers.map((i) => ({ ...i, author: inputInfo.author1.name })),
-    ...inputInfo.author2.answers.map((i) => ({ ...i, author: inputInfo.author2.name })),
-  ]);
+export default function SortSections2() {
 
+  const inputInfo = {
+      author1: {
+        name: "Казимир Малевич",
+        answers: [
+          { src: "/testImgs/sortSections1/malevich-blackSquare.jpg"},
+          { src: "/testImgs/sortSections1/malevich-cowViolin.jpg"},
+          { src: "/testImgs/sortSections1/malevich-kosar.jpg"},
+          { src: "/testImgs/sortSections1/malevich-portrait.jpg"},
+        ]
+      },
+      author2: {
+        name: "Ван Гог",
+        answers: [
+          { src: "/testImgs/sortSections1/vangogh-portrait.jpg"},
+          { src: "/testImgs/sortSections1/vangogh-starryNight.jpg"},
+          { src: "/testImgs/sortSections1/vangogh-terrace.jpg"},
+        ]
+      }
+  }
+
+  const allImages = [...inputInfo.author1.answers, ...inputInfo.author2.answers]
+  // const allImages = inputInfo.questions
+  const [images, setImages] = useState([])
+  useEffect(()=>{
+    setImages(shuffle(allImages))
+  },[])
+  
   // placed[src] = "author1" | "author2" | null
   const [placed, setPlaced] = useState({});
 
@@ -22,18 +45,24 @@ export default function SortSections1({ inputInfo }) {
 
   /** Runs onDragEnd for every image */
   const handleDrop = (src, x, y, resetFn) => {
-    const rect1 = area1Ref.current.getBoundingClientRect();
-    const rect2 = area2Ref.current.getBoundingClientRect();
+    const rect1 = area1Ref.current.getBoundingClientRect()
+    const rect2 = area2Ref.current.getBoundingClientRect()
 
-    const in1 = x > rect1.left && x < rect1.right && y > rect1.top && y < rect1.bottom;
-    const in2 = x > rect2.left && x < rect2.right && y > rect2.top && y < rect2.bottom;
+    const in1 = x > rect1.left && x < rect1.right && y > rect1.top && y < rect1.bottom
+    const in2 = x > rect2.left && x < rect2.right && y > rect2.top && y < rect2.bottom
 
     if (in1) {
+      setPlaced(
+        (p) => (console.log({ ...p, [src]: "author1" }))
+      );
       setPlaced((p) => ({ ...p, [src]: "author1" }));
       return;
     }
 
     if (in2) {
+      setPlaced(
+        (p) => (console.log({ ...p, [src]: "author2" }))
+      );
       setPlaced((p) => ({ ...p, [src]: "author2" }));
       return;
     }
@@ -60,6 +89,7 @@ export default function SortSections1({ inputInfo }) {
           className="AnswerArea1 flex flex-1 flex-wrap content-start items-start text-gray-400 border-2 rounded-xl border-dashed border-gray-400 p-3 gap-3"
         >
           {inputInfo.author1.name}
+          {/* {inputInfo.sortSections.author1} */}
           {allImages
             .filter((img) => placed[img.src] === "author1")
             .map((img) => (
@@ -77,6 +107,7 @@ export default function SortSections1({ inputInfo }) {
           className="AnswerArea2 flex flex-1 flex-wrap content-start items-start text-gray-400 border-2 rounded-xl border-dashed border-gray-400 p-3 gap-3"
         >
           {inputInfo.author2.name}
+          {/* {inputInfo.sortSections.author2} */}
           {allImages
             .filter((img) => placed[img.src] === "author2")
             .map((img) => (
@@ -161,6 +192,7 @@ function ButtonCheck({ placed, inputInfo, images }) {
       const area = placed[img.src];
       if (!area) return false;
       return img.author === inputInfo[area].name;
+      // return console.log(placed[img.src])
     });
 
     if (correct) {

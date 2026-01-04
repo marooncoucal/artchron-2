@@ -7,18 +7,21 @@ const inputInfo = [
     choices: [
       { 
         src: "/testImgs/swipeSelect1/src1.jpg", 
+        typeSrc: "horizontal",
         name: "«Жатва в Монфуко», 1876",
         description: "текст о произведении",
         isCorrect: false 
       },
       { 
         src: "/testImgs/swipeSelect1/src2.jpg",
+        typeSrc: "vertical",
         name: "вторая картина",
         description: "текст о произведении",
         isCorrect: true 
       }, // правильный true, остальные false
       { 
         src: "/testImgs/swipeSelect1/src3.jpg",
+        typeSrc: "horizontal",
         name: "третья картина",
         description: "текст о произведении",
         isCorrect: false 

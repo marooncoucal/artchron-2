@@ -1,7 +1,8 @@
-"use client";
-import Image from "next/image";
+"use client"
+
+import Image from "next/image"
 import { use, useEffect, useRef, useState } from "react"
-import { motion, useMotionValue, useTransform, animate } from "motion/react";
+import { motion, useMotionValue, useTransform, animate } from "motion/react"
 
 function distance(x1, y1, x2, y2) {
   return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2))

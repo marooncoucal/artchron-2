@@ -25,7 +25,7 @@ export default function MainPage1() {
         <div className="flex gap-4 px-5">
         <BlackButtonTest1 link={"/testTypes/true"}>правда ложь</BlackButtonTest1>
         <BlackButtonTest1 link={"/testTypes/swipeSelect"}>swipe select</BlackButtonTest1>
-        <BlackButtonTest1 link={"/categories/sections/topics/resultScreen"}>экран рез теста</BlackButtonTest1>
+        <BlackButtonTest1 link={"/resultScreen"}>экран рез теста</BlackButtonTest1>
         </div>
         <div className="flex gap-4 px-5">
         <BlackButtonTest1 link={"/testTypes/quiz"}>вопросы тест</BlackButtonTest1>
