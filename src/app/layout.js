@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
     <html>
       <body >
         <Header1/>
-        <div className="layout-js pt-[50px] h-svh w-full mx-auto">
+        <div className="layout-js pt-[50px] h-svh w-full mx-auto relative">
             {children}
         </div>
       </body>

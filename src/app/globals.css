@@ -14,6 +14,10 @@
     --color-ac-lime-300: #99DE59;
     --color-ac-green-800: #40864A;
     --color-ac-gray-6B: #6B6B6B;
+
+    --breakpoint-xs: 28rem;
+    --breakpoint-2xs: 22rem;
+    --breakpoint-3xs: 16rem;
 }
 
 @font-face {
@@ -58,15 +62,12 @@
         @apply flex items-center justify-center
     }
     .font-h3{
-        @apply font-benzin text-ac-gray-6B text-[28px] leading-none;
+        @apply font-benzin text-ac-gray-6B uppercase text-[28px] leading-none;
     }
     .font-main-text{
-        @apply font-sf-pro-text text-[14px] leading-none;
+        @apply font-sf-pro-text text-[14px] leading-[18px];
     }
     .font-button{
         @apply font-ubuntu-mono uppercase text-[20px] leading-none text-center;
-    }
-    .btn-1{
-        @apply py-2 rounded-full w-full;
     }
 }
