@@ -13,7 +13,7 @@ const CIRCUMFERENCE = 2 * Math.PI * r
 function clamp(value, min, max){ 
     if (value < min) return min 
     if (value > max) return max 
-    return value 
+    return value
 }
 
 export default function ProgressWheel1({ resultNumber = 0, maxResult = 100}) {
