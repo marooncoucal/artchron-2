@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion, animate } from "motion/react";
+import TaskDescription from "../taskDescription";
 
 function shuffle(arr) {
   return [...arr].sort(() => Math.random() - 0.5);
@@ -81,6 +82,10 @@ export default function SortSections2() {
 
   return (
     <div className="h-full w-full flex flex-col gap-4">
+      <TaskDescription 
+        header={"Перед тобой произведения искусства, которые принадлежат двум разным направлениям"}
+        desc={"перетаскивай их, чтобы распределить"}
+      />
 
       {/* Answer Areas */}
       <div className="h-full w-full gap-4 flex flex-col pb-10">
@@ -122,7 +127,7 @@ export default function SortSections2() {
       </div>
 
       {/* SPAWN AREA */}
-      <div ref={spawnRef} className="ImgSpawnArea flex flex-wrap gap-3">
+      <div ref={spawnRef} className="ImgSpawnArea absolute -bottom-50 flex flex-wrap gap-3">
         {allImages
           .filter((img) => !placed[img.src])
           .map((img) => (

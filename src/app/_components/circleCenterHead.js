@@ -7,7 +7,7 @@ export default function CircleHead({link, title, desc, src}){
         <Link href={link ?? "#"}
             className="flex flex-col items-center justify-center gap-6"
         >
-            <div className="bg-gray-400 w-[180px] h-[180px] rounded-full overflow-hidden drop-shadow-lg">
+            <div className="bg-gray-400 w-[180px] h-[180px] rounded-full overflow-hidden">
             <Image
                 src={src ?? imgNotFound}
                 width={500}
@@ -17,7 +17,7 @@ export default function CircleHead({link, title, desc, src}){
             />
             </div>
             <div className="flex flex-col items-center">
-                <div>{title}</div>
+                <div className="font-h3 text-[16px] text-ac-gray text-center">{title}</div>
                 <div className="text-sm text-gray-400">{desc}</div>
             </div>
         </Link>

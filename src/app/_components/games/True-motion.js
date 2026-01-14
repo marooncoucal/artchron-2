@@ -2,6 +2,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, useMotionValue, useTransform, animate } from "motion/react";
+import { ArrowTestLeft, ArrowTestRight } from "../icons";
+import TaskDescription from "../taskDescription";
 
 const questions = [
   {
@@ -70,9 +72,9 @@ export default function TrueMotion() {
   const isCorrect = selected === current.isTrue;
 
   return (
-    <div className="relative w-full h-full flex flex-col items-center pt-4">
+    <div className="relative w-full h-full flex flex-col items-center">
       {/* load line */}
-      <div className="w-full h-[18px] flex items-center gap-2 mb-7 px-5">
+      {/* <div className="w-full h-[18px] flex items-center gap-2 mb-7 px-5">
         <button className="w-5 h-5 text-[20px] text-gray-400 leading-none">
           ×
         </button>
@@ -82,9 +84,12 @@ export default function TrueMotion() {
             style={{ width: `${((currentIndex + 1) / questions.length) * 100 - 20}%`}}
           ></div>
         </div>
-      </div>
-      {/* task desc */}
-      <h2 className="text-[24px] font-semibold text-black mb-2">Выберите: правда или ложь</h2>
+      </div> */}
+
+      <TaskDescription
+          header={"Распредели произведения по направлениям"}
+          desc={"перетаскивая их влево/вправо"}
+      />
 
       <div
         key={currentIndex}
@@ -92,10 +97,10 @@ export default function TrueMotion() {
           ${isAnimating? "translate-x-full opacity-0" : "translate-x-0 opacity-100"}
           `}
       >
-        <div className="w-full h-full pb-28 flex flex-col gap-5">
-          <p className="text-[18px] text-black leading-snug text-center">
+        <div className="w-full h-full pb-50 pt-16 flex flex-col gap-5">
+          {/* <p className="text-[18px] text-black leading-snug text-center">
             {current.title}
-          </p>
+          </p> */}
           <motion.div
             drag
             dragConstraints={{ left: -270, right: 270, top: -20, bottom: 100 }}
@@ -109,7 +114,7 @@ export default function TrueMotion() {
               alt="question visual"
               width={600}
               height={600}
-              className="w-full h-full object-cover object-center rounded-2xl pointer-events-none"
+              className="w-full h-full object-cover object-center pointer-events-none"
             />
             {/* overlays */}
             <motion.div
@@ -131,10 +136,12 @@ export default function TrueMotion() {
 
       {!showExplanation ? (
         <div
-          className={`absolute bottom-5 left-5 right-5 flex justify-center gap-4`}
+          className={`absolute bottom-5 left-5 right-5 flex-center flex-col gap-0`}
         >
-          <Button onClick={() => handleAnswer(false)}>ложь</Button>
-          <Button onClick={() => handleAnswer(true)}>правда</Button>
+          {/* <Button onClick={() => handleAnswer(false)}>ложь</Button> */}
+          {/* <Button onClick={() => handleAnswer(true)}>правда</Button> */}
+          <SwipeButton onClick={() => handleAnswer(false)} left={true}>Импрессионизм</SwipeButton>
+          <SwipeButton onClick={() => handleAnswer(true)} right={true}>постимпрессионизм</SwipeButton>
         </div>
       ) : (
         <AnswerBoxBottom
@@ -159,7 +166,19 @@ function Button({ children, onClick }) {
     >
       {children}
     </div>
-  );
+  )
+}
+
+function SwipeButton({children, onClick, left = false, right = false}){
+  return(
+    <div onClick={onClick} className="select-none w-full flex-center py-2">
+      <div className="cursor-pointer w-full flex justify-between max-w-[320px]">
+        {left && <ArrowTestLeft color={"#7B7B7B"}/>}
+        <div className="font-button text-ac-gray-light">{children}</div>
+        {right && <ArrowTestRight color={"#7B7B7B"}/>}
+      </div>
+    </div>
+  )
 }
 
 function AnswerBoxBottom({ isCorrect, answer, onClick }) {
@@ -186,5 +205,5 @@ function AnswerBoxBottom({ isCorrect, answer, onClick }) {
         </button>
       </div>
     </div>
-  );
+  )
 }

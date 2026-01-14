@@ -5,8 +5,10 @@ import Link from "next/link";
 export default function TesTypesLayout({children}){
     return(
         <section className="">
-            <HeaderNav hasExit={true} hasProgress={true} progress={120} hasCount={true} count={12}/>
-            <div className="h-[calc(100svh-50px)] pt-10">{children}</div>
+            <HeaderNav link={"/"} hasProgress={true} hasCount={true} fullCount={19}/>
+            <div className="h-svh pt-20">{children}</div>
         </section>
     )
 }
+
+// h-[calc(100svh-50px)]

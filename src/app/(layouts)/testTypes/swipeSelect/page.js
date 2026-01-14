@@ -6,21 +6,21 @@ const inputInfo = [
     question: "Какая из этих картин выполнена в стиле импрессионизма?",
     choices: [
       { 
-        src: "/testImgs/swipeSelect1/src1.jpg", 
+        src: "/testImgs/swipeHor1/zhatva-fuko.jpg", 
         typeSrc: "horizontal",
         name: "«Жатва в Монфуко», 1876",
         description: "текст о произведении",
         isCorrect: false 
       },
       { 
-        src: "/testImgs/swipeSelect1/src2.jpg",
+        src: "/testImgs/swipeHor1/src2.jpg",
         typeSrc: "vertical",
         name: "вторая картина",
         description: "текст о произведении",
         isCorrect: true 
       }, // правильный true, остальные false
       { 
-        src: "/testImgs/swipeSelect1/src3.jpg",
+        src: "/testImgs/swipeHor1/src3.jpg",
         typeSrc: "horizontal",
         name: "третья картина",
         description: "текст о произведении",
@@ -33,13 +33,13 @@ const inputInfo = [
     question: "второй вопрос",
     choices: [
       { 
-        src: "/testImgs/swipeSelect1/src4.jpg", 
+        src: "/testImgs/swipeHor1/src4.jpg", 
         name: "первая картина",
         description: "текст о произведении",
         isCorrect: false 
       },
       { 
-        src: "/testImgs/swipeSelect1/src5.jpg",
+        src: "/testImgs/swipeHor1/src5.jpg",
         name: "вторая картина",
         description: "текст о произведении",
         isCorrect: true 
@@ -51,7 +51,7 @@ const inputInfo = [
 export default function SwipeSelectPage1() {
   return (
     <div className="SwipeSelectPage1 h-full w-full">
-        <SwipeSelect1 />
+        <SwipeSelect1 inputInfo={inputInfo} />
     </div>
   )
 }
