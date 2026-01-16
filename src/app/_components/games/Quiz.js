@@ -116,7 +116,7 @@ export default function Quiz() {
             )}
 
 
-<div className="relative mb-[25px]">
+            <div className="relative mb-[25px]">
                 <div className={`${answered ? "opacity-40" : "opacity-100"} transition-opacity duration-200`}>
                     {quest.subquestions.map((sq, sqIndex) => (
                         <div key={sqIndex} className="mb-4 w-full">
@@ -137,7 +137,7 @@ export default function Quiz() {
                                         }}
                                     >
                                         {choice}
-                                        
+
                                     </div>
                                 ))}
                             </div>
@@ -167,7 +167,7 @@ export default function Quiz() {
                 </div>
 
 
-<div className="flex justify-center">
+                <div className="flex justify-center">
                     {!answered ? (
                         <div
                             className={`border text-center border-black bg-black text-white rounded p-2 w-full max-w-[100%] cursor-pointer

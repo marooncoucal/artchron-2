@@ -6,7 +6,7 @@ export default function AuthLayout({children}){
     return(
         <section className="">
             <HeaderNav />
-            <div className="h-[calc(100svh-50px)]">{children}</div>
+            <div className="h-svh">{children}</div>
         </section>
     )
 }

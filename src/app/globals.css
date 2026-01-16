@@ -6,14 +6,15 @@
 
 @theme {
     --font-benzin: "Benzin", sans-serif; 
-    --font-sf-pro-text: "SF-Pro-Text", sans-serif; 
+    --font-sf-pro-text: "SF-Pro-Text", serif; 
     --font-ubuntu-mono: "Ubuntu-Mono", sans-serif; 
 
     --color-ac-orange-600: #FF684E;
     --color-ac-yellow-400: #F4C469;
     --color-ac-lime-300: #99DE59;
     --color-ac-green-800: #40864A;
-    --color-ac-gray-6B: #6B6B6B;
+    --color-ac-gray: #5B5B5B;
+    --color-ac-gray-light: #7B7B7B;
 
     --breakpoint-xs: 28rem;
     --breakpoint-2xs: 22rem;
@@ -33,6 +34,20 @@
   font-weight: 500;
   font-display: swap;
   src: url("/fonts/Benzin-Medium.woff") format("woff");
+}
+@font-face {
+  font-family: SF-Pro-Text;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/SFProText-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: SF-Pro-Text;
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/SFProText-LightItalic.ttf") format("truetype");
 }
 @font-face {
   font-family: SF-Pro-Text;
@@ -62,10 +77,10 @@
         @apply flex items-center justify-center
     }
     .font-h3{
-        @apply font-benzin text-ac-gray-6B uppercase text-[28px] leading-none;
+        @apply font-benzin text-ac-gray uppercase text-[28px] leading-none;
     }
     .font-main-text{
-        @apply font-sf-pro-text text-[14px] leading-[18px];
+        @apply font-sf-pro-text font-light text-[14px] leading-[18px];
     }
     .font-button{
         @apply font-ubuntu-mono uppercase text-[20px] leading-none text-center;

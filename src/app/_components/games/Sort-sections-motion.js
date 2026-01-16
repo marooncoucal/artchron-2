@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { use, useEffect, useRef, useState } from "react"
 import { motion, useMotionValue, useTransform, animate } from "motion/react"
+import TaskDescription from "../taskDescription"
 
 function distance(x1, y1, x2, y2) {
   return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2))
@@ -42,9 +43,22 @@ export default function SortSections1({inputInfo}) {
 
   return (
     <div className="h-full w-full flex flex-col gap-4">
-        <div className='h-full w-full gap-4 flex flex-col pb-40'>
-            <div ref={area1Ref} className='AnswerArea1 relative flex flex-1 justify-center items-center text-gray-400 border-2 rounded-xl border-dashed border-gray-400'><div className="absolute z-10 text-center select-none pointer-events-none">{author1}</div></div>
-            <div ref={area2Ref} className='AnswerArea2 flex flex-1 justify-center items-center text-gray-400 border-2 rounded-xl border-dashed border-gray-400'><div className="absolute z-10 text-center">{author2}</div></div>
+        <TaskDescription
+        header={"Перед тобой произведения искусства, которые принадлежат двум разным направлениям"}
+        desc={"перетаскивай их, чтобы распределить"}
+        />
+
+        <div className='h-full w-full gap-4 flex flex-col pt-4 pb-40'>
+            <div ref={area1Ref} className='AnswerArea1 flex flex-1 justify-center items-center border-2 rounded-xl border-dashed border-gray-400'>
+                <div className="absolute z-10 text-center text-ac-gray-light font-button select-none pointer-events-none">
+                    {author1}
+                </div>
+            </div>
+            <div ref={area2Ref} className='AnswerArea2 flex flex-1 justify-center items-center border-2 rounded-xl border-dashed border-gray-400'>
+                <div className="absolute z-10 text-center text-ac-gray-light font-button select-none pointer-events-none">
+                    {author2}
+                </div>
+            </div>
         </div>
 
         <div ref={spawnRef} className='SpawnArea absolute bottom-30 mx-auto'>

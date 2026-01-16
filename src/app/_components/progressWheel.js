@@ -33,7 +33,7 @@ export default function ProgressWheel1({ resultNumber = 0, maxResult = 100}) {
         progress,
         v => CIRCUMFERENCE - (v / 100) * CIRCUMFERENCE
     )
-
+ 
     const progressWithPercent = useTransform(
         progress,
         v => `${Math.round(v)}%`
