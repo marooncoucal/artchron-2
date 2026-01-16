@@ -17,12 +17,12 @@ export default function Button1({children, link, variant, className, onClick}) {
             break;
     }
     return (
-        <div className={`font-button py-3 rounded-full w-full ${stl} ${className}`}>
+        <div className={`rounded-full w-full h-full flex ${stl} ${className}`} >
             {
                 link ? (
-                    <Link href={link ?? "#"}>{children}</Link>
+                    <Link href={link ?? "#"} className={`font-button py-3 rounded-full w-full`}>{children}</Link>
                 ) : (
-                    <div onClick={onClick}>{children}</div>
+                    <div onClick={onClick} className={`font-button py-3 rounded-full w-full`}>{children}</div>
                 )
             }
         </div>

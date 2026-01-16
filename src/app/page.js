@@ -1,5 +1,5 @@
 import CategoriesPage1 from "./(layouts)/categories/page";
-import MainPage1 from "./(layouts)/welcome/page";
+// import MainPage1 from "./(layouts)/welcome/page1";
 
 
 export default function Home() {
