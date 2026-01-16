@@ -13,7 +13,7 @@ const inputInfo = [
         isCorrect: false 
       },
       { 
-        src: "/testImgs/swipeHor1/src2.jpg",
+        src: "/testImgs/swipeHor1/vangogh-starryNight.jpg",
         typeSrc: "vertical",
         name: "вторая картина",
         description: "текст о произведении",
@@ -34,12 +34,14 @@ const inputInfo = [
     choices: [
       { 
         src: "/testImgs/swipeHor1/src4.jpg", 
+        typeSrc: "vertical",
         name: "первая картина",
         description: "текст о произведении",
         isCorrect: false 
       },
       { 
         src: "/testImgs/swipeHor1/src5.jpg",
+        typeSrc: "vertical",
         name: "вторая картина",
         description: "текст о произведении",
         isCorrect: true 

@@ -75,7 +75,7 @@ const test1Src = [
 ]
 
 const test2Src = [
-        {
+    {
         name: "Постимпрессионизм",
         link: "/categories/sections/topics/",
         topics:[
@@ -85,7 +85,7 @@ const test2Src = [
                 desc: "12 вопросов",
                 src: "/img/plashki/test2/1.jpg"
             },
-                {
+            {
                 link: "/firstScreenTest",
                 title: "Тест 2",
                 desc: "14 вопросов",
