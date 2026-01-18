@@ -4,10 +4,11 @@ import Image from "next/image";
 import { useState } from "react"
 import Button1 from "../buttons1";
 import TaskDescription from "../taskDescription";
+import { useRouter } from "next/navigation";
 
 export default function QuizAC({ questions }) {
 
-    const [currentIndex, setCurrentIndex] = useState(1)
+    const [currentIndex, setCurrentIndex] = useState(0)
     const current = questions[currentIndex]
 
     const qType = current.type
@@ -24,8 +25,8 @@ export default function QuizAC({ questions }) {
     // }
     // return <>{renderContent()}</> 
 
-    // return <TextQuestion current={current} currentIndex={currentIndex} />
-    return <PaintingQuestion current={current} currentIndex={currentIndex} />
+    return <TextQuestion current={current} currentIndex={currentIndex} />
+    // return <PaintingQuestion current={current} currentIndex={currentIndex} />
 }
 
 function TextQuestion({current, currentIndex}){
@@ -108,7 +109,7 @@ function AnswerButtons({current, variant}){
     return(
         <div className={`absolute bottom-5 left-5 right-5 ${stl}`}>
             {current.choices.map( (choice, index) => (
-                <Button1 key={index}>{choice.text}</Button1> 
+                <Button1 key={index} link={"/testTypes/swipeSelect"}>{choice.text}</Button1> 
             ))}
         </div>
     )

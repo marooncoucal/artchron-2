@@ -3,7 +3,7 @@ import HeaderNav from "@/app/_components/headerNav";
 import { imgNotFound } from "@/app/_components/imgNotFound";
 
 export default function SectionTopics(){
-    const testInfo = test2Src[0]
+    const testInfo = test1Src[0]
     const test = testInfo.topics  
     // console.log(testInfo.name)
     return(

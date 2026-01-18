@@ -25,7 +25,7 @@ export default function SwipeSelect1({inputInfo}){
                 </div>
             </div>
             <div className="absolute bottom-5 left-5 right-5">
-                <Button1>готово</Button1> 
+                <Button1 link={"/testTypes/sortSections"}>готово</Button1> 
             </div>
         </div>
     )

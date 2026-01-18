@@ -4,6 +4,7 @@ import Image from "next/image"
 import { use, useEffect, useRef, useState } from "react"
 import { motion, useMotionValue, useTransform, animate } from "motion/react"
 import TaskDescription from "../taskDescription"
+import { useRouter } from "next/navigation"
 
 function distance(x1, y1, x2, y2) {
   return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2))
@@ -72,7 +73,7 @@ export default function SortSections1({inputInfo}) {
         </div>
 
         {/* { (imagesAll.length is empty) && <ButtonCheck /> } */}
-        {/* <ButtonCheck />  */}
+        <ButtonCheck /> 
     </div>
   )
 }
@@ -150,6 +151,35 @@ function Painting({img, area1Ref, area2Ref}){
     )
 }
 
+function Button1({children, link, variant, className, onClick}) {
+    let stl = ""
+    switch (variant){
+        case "right": 
+            stl = "bg-ac-lime-300 text-white"
+            break;
+        case "wrong": 
+            stl = "bg-ac-orange-600 text-white"
+            break;
+        case "border": 
+            stl = "bg-white border border-[#F2F2F2] text-[#393939]"
+            break;
+        default:
+            stl = "bg-[#F2F2F2] text-[#393939]"
+            break;
+    }
+    return (
+        <div className={`rounded-full w-full h-full flex ${stl} ${className}`} >
+            {
+                link ? (
+                    <Link href={link ?? "#"} className={`font-button py-3 rounded-full w-full`}>{children}</Link>
+                ) : (
+                    <div onClick={onClick} className={`font-button py-3 rounded-full w-full`}>{children}</div>
+                )
+            }
+        </div>
+    );
+}
+
 function ButtonCheck({inPlaceCount, images}){
     const [checkStatus, setCheckStatus] = useState(null) // null | 'success' | 'error'
     const [buttonText, setButtonText] = useState("Проверить")
@@ -182,17 +212,18 @@ function ButtonCheck({inPlaceCount, images}){
         }
     }, [])
 
+    const router = useRouter()
     return(  
       <div className="mt-2 mb-6 flex">
         <button
           type="button"
         //   onClick={handleCheck}
+          onClick={() => router.push("/resultScreen")}
           className={`
-                    absolute bottom-4 left-0 right-0 
-                    py-3 uppercase text-base font-medium transition-all 
+                    absolute bottom-4 left-4 right-4 rounded-full py-3 font-button transition-all 
                     ${checkStatus === "correct" ? "bg-[#57DE75] text-white": ""}
                     ${checkStatus === "wrong" ? "bg-[#E46F2B] text-white" : ""}
-                    ${checkStatus === null ? "bg-white text-black border border-black" : ""}
+                    ${checkStatus === null ? "bg-[#F2F2F2] text-[#393939]" : ""}
                 `}
         >
           {buttonText}
