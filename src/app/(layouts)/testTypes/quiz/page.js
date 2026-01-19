@@ -3,6 +3,18 @@ import Quiz from "@/app/_components/games/Quiz";
 import QuizAC from "@/app/_components/games/quizAC";
 
 const quizInfo = [
+  // {
+  //   slug: "question0",
+  //   type: "paintings", // где вопрос "чья картина"
+  //   src: "/testImgs/quiz2/src0.jpg", // или задник или основная к вопросу (по типу)
+  //   question: "?????",
+  //   choices: [
+  //     { text: "1", isCorrect: false},
+  //     { text: "2", isCorrect: false},
+  //     { text: "3", isCorrect: true}, // правильный true, остальные false
+  //     { text: "4", isCorrect: false}, 
+  //   ],
+  // },
   {
     slug: "question1",
     type: "textField", // где вопрос текстовый
@@ -26,13 +38,13 @@ const quizInfo = [
       { text: "Ренуару", isCorrect: false},
       { text: "Эдуарду Мане", isCorrect: false},
     ],
-  },
+  }
 ]
 
 export default function QuizPage() {
   return(
     <>    
-      <QuizAC questions={quizInfo}/>
+      <QuizAC questions={quizInfo} link={"/testTypes/swipeSelect"}/>
       {/* <Quiz /> */}
       {/* <Podbor /> */}
     </>

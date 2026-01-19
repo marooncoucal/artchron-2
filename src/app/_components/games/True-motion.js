@@ -88,7 +88,7 @@ export default function TrueMotion({inputInfo, link}) {
         router.push(link ?? "#")
       }
     }, 410)
-  };
+  }
 
   const isCorrect = selected === current.isTrue;
 
@@ -186,7 +186,7 @@ function Button({ children, onClick }) {
 
 function SwipeButton({children, onClick, left = false, right = false}){
   return(
-    <div onClick={onClick} className="select-none w-full flex-center py-2">
+    <div onClick={onClick} className="select-none w-full flex-center py-3.5">
       <div className="cursor-pointer w-full flex justify-between max-w-[320px]">
         {left && <ArrowTestLeft color={"#7B7B7B"}/>}
         <div className="font-button text-ac-gray-light">{children}</div>

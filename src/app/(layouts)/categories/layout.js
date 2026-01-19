@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function CategoriesLayout({children}){
     return(
         <section className="flex-center">
-            <BottomNav1 />
+            {/* <BottomNav1 /> */}
             <div className="h-svh w-full">{children}</div>
         </section>
     )

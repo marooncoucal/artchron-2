@@ -5,8 +5,8 @@ import { imgNotFound } from "./imgNotFound";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-export default function RowCircles({ testInfo, desc }) {
-  const rowInfo = testInfo[0]
+export default function RowCircles({ testInfo, desc, subPage }) {
+  const rowInfo = testInfo
   const link = rowInfo.link
   const title = rowInfo.name
   const fullCount = rowInfo.topics.length ?? 10

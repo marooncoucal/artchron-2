@@ -11,14 +11,14 @@ export default function BottomNav1(){
             <Link href="/" className="w-[28px] h-[28px]">
                 <IconMain color={"#5b5b5b"} />
             </Link>
-            <div className="flex gap-1">
-                {/* <Link href="/testTypes/puzzle">Puzzle</Link> */}
+            {/* <div className="flex gap-1">
+                <Link href="/testTypes/puzzle">Puzzle</Link>
                 <Link href="/testTypes/sortSections">Sort</Link>
                 <Link href="/testTypes/quiz">Quiz</Link>
                 <Link href="/testTypes/true">Swipe</Link>
                 <Link href="/testTypes/swipeSelect">HorScroll</Link>
                 <Link href="/resultScreen">Result</Link>
-            </div>
+            </div> */}
             <Link href="/welcomeLogin" className='w-[28px] h-[28px]'>
                 <IconLogin color={"#ccc"} />
             </Link>
