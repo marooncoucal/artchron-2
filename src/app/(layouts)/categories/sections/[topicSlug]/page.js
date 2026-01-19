@@ -15,13 +15,12 @@ async function getTests(){
 export default async function SectionTopics({params}){
     const { topicSlug } = await params
     const testInfo = await getTests()
-    // console.log(slug)
-    const quiz = testInfo.quizes.find(q => q.topicSlug === topicSlug)
-    if (!quiz) {
-        return <div>topic not found</div>
+    const sectionTopics = testInfo.quizes.find(q => q.topicSlug === topicSlug)
+    if (!sectionTopics) {
+        return <div>topics not found</div>
     }
-    const tests = quiz.topics
-    const header = quiz.name
+    const tests = sectionTopics.topics
+    const header = sectionTopics.name
     // const testInfo = testRowsSrc1
     // const test1 = testInfo.quizes[0]
     // const tests = test1.topics
@@ -33,7 +32,7 @@ export default async function SectionTopics({params}){
             {tests.map((t, index) => (
                 <CircleHead
                     key={index} 
-                    link={t.link ?? "#"} 
+                    link={`/categories/sections/${topicSlug}/firstScreenTest/${t.testSlug}` ?? "#"} 
                     src={t.src ?? imgNotFound} 
                     title={t.title} 
                     desc={t.desc}
