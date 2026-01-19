@@ -6,7 +6,17 @@ import { imgNotFound } from "@/app/_components/imgNotFound";
 import NormalTextTest1 from "@/app/_components/normalText";
 import Image from "next/image";
 
-export default function TopicPage({src, completed}){
+async function getTopic(){
+    const remoteData = await fetch("http://localhost:3000/srcData/tests1.json", 
+    { cache: "no-store" })
+    const data = await remoteData.json()
+    return data
+}
+
+export default async function TopicPage({params, src, completed}){
+    const { slug } = await params
+    const topicInfo =  await getTopic()
+    // const topic = topicInfo.quizes
     // если не проходил ранее - желтый, иначе - зеленый
     const circleColor = completed ? "bg-ac-lime-300" : "bg-ac-yellow-400"
     const textButton = completed ? "пройти еще раз" : "Начать тест"

@@ -13,11 +13,12 @@ async function getTests(){
 }
 
 export default async function SectionTopics({params}){
-    const { slug } = await params
+    const { topicSlug } = await params
     const testInfo = await getTests()
-    const quiz = testInfo.quizes.find(q => q.slug === slug)
+    // console.log(slug)
+    const quiz = testInfo.quizes.find(q => q.topicSlug === topicSlug)
     if (!quiz) {
-        return <div>quizes not found</div>
+        return <div>topic not found</div>
     }
     const tests = quiz.topics
     const header = quiz.name

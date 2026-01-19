@@ -1,7 +1,7 @@
 { 
     "quizes" : [
         {
-            "slug" : "impressionism",
+            "topicSlug" : "impressionism",
             "name": "Импрессионизм",
             "link": "/categories/sections/topics/",
             "topics":[
@@ -43,7 +43,7 @@
             ]
         },
         {
-            "slug": "post-impressionism",
+            "topicSlug": "post-impressionism",
             "name": "Постимпрессионизм",
             "link": "/categories/sections/topics/",
             "topics":[
