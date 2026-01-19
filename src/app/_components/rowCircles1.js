@@ -15,7 +15,8 @@ export default function RowCircles({ testInfo, desc, subPage }) {
   return (
     <div className="w-full">
       <Link 
-        href={link ?? "#"} 
+        // href={link ?? "#"} 
+        href={`/categories/sections/${testInfo.slug}` ?? "#"} 
         className="flex pt-1 pb-3.5 overflow-hidden"
       >
         <div className="relative flex justify-center ml-20">

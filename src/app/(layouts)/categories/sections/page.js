@@ -15,7 +15,7 @@ async function getRows(){
 }
 
 export default async function CategoriesSections({params}){
-    const { slug } = await params
+    // const { slug } = await params
     // const tSrc = testRowsSrc1
     const quizRows = await getRows()
     const tSrc = quizRows.quizes

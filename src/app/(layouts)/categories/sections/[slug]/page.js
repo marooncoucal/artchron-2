@@ -15,9 +15,16 @@ async function getTests(){
 export default async function SectionTopics({params}){
     const { slug } = await params
     const testInfo = await getTests()
-    const test1 = testInfo.quizes[0]
-    const tests = test1.topics
-    const header = test1.name
+    const quiz = testInfo.quizes.find(q => q.slug === slug)
+    if (!quiz) {
+        return <div>quizes not found</div>
+    }
+    const tests = quiz.topics
+    const header = quiz.name
+    // const testInfo = testRowsSrc1
+    // const test1 = testInfo.quizes[0]
+    // const tests = test1.topics
+    // const header = test1.name
     return(
         <div className="w-full flex flex-col items-center gap-18 pt-26 pb-40">
             <HeaderNav header={header} hasGradient={true}/>
