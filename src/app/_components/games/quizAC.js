@@ -19,8 +19,8 @@ export default function QuizAC({ questions }) {
 
     // const renderContent = () => {
     //     switch(qType){
-    //         case "textFiled": return <TextQuestion />
-    //         case "paintings": return <PaintingQuestion />
+    //         case "textFiled": return <TextQuestion current={current} currentIndex={currentIndex} />
+    //         case "paintings": return <PaintingQuestion current={current} currentIndex={currentIndex} />
     //     }
     // }
     // return <>{renderContent()}</> 
@@ -106,11 +106,70 @@ function AnswerButtons({current, variant}){
             stl = "flex-center flex-col gap-2"
             break;
     }
+
+    const router = useRouter()
+
+    const [disabled, setDisabled] = useState(false)
+    const [selectedIdx, setSelectedIdx] = useState(null)
+    const [correctIdx, setCorrectIdx] = useState(null)
+
+    const handleSelect = (idx) => {
+        if (disabled) return
+        setDisabled(true)
+
+        setSelectedIdx(idx)
+
+        const correctIndex = current.choices.findIndex(c => c.isCorrect)
+        setCorrectIdx(correctIndex)
+        
+        const isRight = current.choices[idx].isCorrect
+
+        setTimeout(() => {
+            if (isRight) {
+                // console.log("answer right")
+                router.push("/testTypes/swipeSelect")
+            } else {
+                // console.log("answer wrong")
+                setTimeout(() => {
+                    setSelectedIdx(null)
+                    setCorrectIdx(null)
+                    setDisabled(false)
+                    // push if both buttons
+                    router.push("/testTypes/swipeSelect")
+                }, 1100)
+            }
+        }, isRight ? 400 : 1100)
+    }
+
     return(
         <div className={`absolute bottom-5 left-5 right-5 ${stl}`}>
-            {current.choices.map( (choice, index) => (
-                <Button1 key={index} link={"/testTypes/swipeSelect"}>{choice.text}</Button1> 
-            ))}
+            {current.choices.map( (choice, index) => {
+                const isSelected = selectedIdx === index
+                const isCorrectButton = correctIdx === index
+                let buttonVariant = "default"
+
+                // both buttons
+                if (isCorrectButton) {
+                    buttonVariant = "right"
+                } else if (isSelected) {
+                    buttonVariant = choice.isCorrect ? "right" : "wrong"
+                }
+
+                // one button
+                // if (isSelected) {
+                //     buttonVariant = choice.isCorrect ? "right" : "wrong"
+                // }
+                return (
+                    <Button1 
+                        key={index} 
+                        variant={buttonVariant}
+                        onClick={() => handleSelect(index)}
+                        disabled={disabled}
+                    >
+                        {choice.text}
+                    </Button1> 
+                );
+            })}
         </div>
     )
 }
