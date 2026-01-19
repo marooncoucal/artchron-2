@@ -31,6 +31,7 @@ export default async function TopicPage({params}){
     const textButton = completed ? "пройти еще раз" : "Начать тест"
 
     const header = testData.title
+    const title = testData.title
     const desc = testData.desc
     const src = testData.src
     // const src = "/img/plashki/firstScreen.jpg"
@@ -47,7 +48,7 @@ export default async function TopicPage({params}){
                 />
             </div>
             <div>
-                <p className="font-h3 text-[32px] text-ac-gray pt-6">Тест 1</p>
+                <p className="font-h3 text-[32px] text-ac-gray pt-6">{title}</p>
                 <p className="font-main-text text-ac-gray-light/80 pt-1 h-[36px] line-clamp-2">{desc}</p>
             </div>
             <div className="flex items-center gap-1 pt-4">
