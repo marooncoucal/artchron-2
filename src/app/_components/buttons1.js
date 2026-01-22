@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-export default function Button1({children, link, variant, className, onClick}) {
+export default function Button1({children, link, variant, className, onClick, disabled = false}) {
     let stl = ""
     switch (variant){
         case "right": 
@@ -17,12 +17,12 @@ export default function Button1({children, link, variant, className, onClick}) {
             break;
     }
     return (
-        <div className={`font-button py-3 rounded-full w-full ${stl} ${className}`}>
+        <div className={`rounded-full w-full h-full flex ${stl} ${className} select-none cursor-pointer`} >
             {
-                link ? (
-                    <Link href={link ?? "#"}>{children}</Link>
+                link && !disabled ? (
+                    <Link href={link ?? "#"} className={`font-button py-3 rounded-full w-full`}>{children}</Link>
                 ) : (
-                    <div onClick={onClick}>{children}</div>
+                    <div onClick={!disabled ? onClick : undefined} className={`font-button py-3 rounded-full w-full`}>{children}</div>
                 )
             }
         </div>

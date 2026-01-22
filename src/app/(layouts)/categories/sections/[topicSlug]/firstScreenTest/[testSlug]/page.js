@@ -4,16 +4,40 @@ import Button1 from "@/app/_components/buttons1";
 import HeaderNav from "@/app/_components/headerNav";
 import { imgNotFound } from "@/app/_components/imgNotFound";
 import NormalTextTest1 from "@/app/_components/normalText";
+import { CMS_URL } from "@/config";
 import Image from "next/image";
 
-export default function TopicPage({src, completed}){
+async function getTopic(){
+    const remoteData = await fetch(CMS_URL + "/srcData/tests1.json", { cache: "no-store" })
+    const data = await remoteData.json()
+    return data
+}
+
+export default async function TopicPage({params}){
+    const { topicSlug, testSlug } = await params
+    const topicInfo =  await getTopic()
+    const topic = topicInfo.quizes.find(q => q.topicSlug === topicSlug)
+    if (!topic) {
+        return <div>topic not found</div>
+    }
+    const testData = topic.topics.find(t => t.testSlug === testSlug)
+    if (!testData) {
+        return <div>Test not found</div>
+    }
+
     // если не проходил ранее - желтый, иначе - зеленый
+    const completed = false
     const circleColor = completed ? "bg-ac-lime-300" : "bg-ac-yellow-400"
     const textButton = completed ? "пройти еще раз" : "Начать тест"
-    src = "/img/plashki/firstScreen.jpg"
+
+    const header = testData.title
+    const title = testData.title
+    const desc = testData.desc
+    const src = testData.src
+    // const src = "/img/plashki/firstScreen.jpg"
     return(
         <div className={`w-full h-full flex flex-col pb-6 pt-20 px-4`}>
-            <HeaderNav header={"имя теста"}/>
+            <HeaderNav header={header}/>
             <div className="w-full h-[calc(100svh-254px)]">
                 <Image
                     src={src ?? imgNotFound}
@@ -24,8 +48,8 @@ export default function TopicPage({src, completed}){
                 />
             </div>
             <div>
-                <p className="font-h3 text-[32px] text-ac-gray pt-6">Тест 1</p>
-                <p className="font-main-text text-ac-gray-light/80 pt-1 h-[36px] line-clamp-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p className="font-h3 text-[32px] text-ac-gray pt-6">{title}</p>
+                <p className="font-main-text text-ac-gray-light/80 pt-1 h-[36px] line-clamp-2">{desc}</p>
             </div>
             <div className="flex items-center gap-1 pt-4">
                 <Button1 link={"/testTypes/true" ?? "#"}>{textButton}</Button1>

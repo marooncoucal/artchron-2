@@ -4,34 +4,40 @@ import Image from "next/image";
 import { motion, useMotionValue, useTransform, animate } from "motion/react";
 import { ArrowTestLeft, ArrowTestRight } from "../icons";
 import TaskDescription from "../taskDescription";
+import { useRouter } from "next/navigation";
 
-const questions = [
-  {
-    title: "Картину «Чёрный квадрат» Казимир Малевич впервые представил на выставке в Париже в 1915 году.",
-    image: "/testImgs/trueTest1/black-square.jpg",
-    isTrue: false,
-    explanation: "Картина была представлена в 1915 году, но не в Париже, а в Петрограде.",
-  },
-  {
-    title: "Винсент Ван Гог отрезал себе ухо.",
-    image: "/testImgs/trueTest1/vangogh.jpg",
-    isTrue: true,
-    explanation: "Это правда — Ван Гог отрезал себе часть уха в 1888 году во Франции.",
-  },
-  {
-    title: "Звёздную ночь написал Микеланджело.",
-    image: "/testImgs/trueTest1/vangogh1.jpg",
-    isTrue: false,
-    explanation: "Это ложь — «Звёздная ночь» была написана Винсентом Ван Гогом в 1889 году.",
-  },
-];
+// const questions = [
+//   {
+//     title: "Картину «Чёрный квадрат» Казимир Малевич впервые представил на выставке в Париже в 1915 году.",
+//     image: "/testImgs/trueTest1/black-square.jpg",
+//     isTrue: false,
+//     explanation: "Картина была представлена в 1915 году, но не в Париже, а в Петрограде.",
+//   },
+//   {
+//     title: "Винсент Ван Гог отрезал себе ухо.",
+//     image: "/testImgs/trueTest1/vangogh.jpg",
+//     isTrue: true,
+//     explanation: "Это правда — Ван Гог отрезал себе часть уха в 1888 году во Франции.",
+//   },
+//   {
+//     title: "Звёздную ночь написал Микеланджело.",
+//     image: "/testImgs/trueTest1/vangogh1.jpg",
+//     isTrue: false,
+//     explanation: "Это ложь — «Звёздная ночь» была написана Винсентом Ван Гогом в 1889 году.",
+//   },
+// ];
 
-export default function TrueMotion() {
+export default function TrueMotion({inputInfo, link}) {
+  const router = useRouter()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selected, setSelected] = useState(null)
   const [showExplanation, setShowExplanation] = useState(false)
   const [isAnimating, setIsAnimating] = useState(false)
+  const [newCardAnimating, setNewCardAnimating] = useState(false)
 
+  const leftOption = inputInfo.choiceVariants.leftText
+  const rightOption = inputInfo.choiceVariants.rightText
+  const questions = inputInfo.questions
   const current = questions[currentIndex]
 
   const motionX = useMotionValue(0)
@@ -60,32 +66,34 @@ export default function TrueMotion() {
   }
 
   const handleNext = () => {
-    setIsAnimating(true)
+    if (currentIndex !== questions.length - 1) {
+      setIsAnimating(true)
+      setTimeout(() => {
+        setSelected(null)
+        setShowExplanation(false)
+        setIsAnimating(false)
+      }, 410)
+    }
     setTimeout(() => {
-      setSelected(null)
-      setShowExplanation(false)
-      setCurrentIndex((prev) => (prev + 1) % questions.length)
-      setIsAnimating(false)
-    }, 300)
-  };
+      if (currentIndex !== questions.length - 1) {
+        setCurrentIndex((prev) => (prev + 1))
+      }
+      setNewCardAnimating(true)
+      setTimeout(() => {
+        setNewCardAnimating(false)
+      }, 400)
+    }, 410)
+    setTimeout(() => {
+      if (currentIndex === questions.length - 1) {
+        router.push(link ?? "#")
+      }
+    }, 410)
+  }
 
   const isCorrect = selected === current.isTrue;
 
   return (
     <div className="relative w-full h-full flex flex-col items-center">
-      {/* load line */}
-      {/* <div className="w-full h-[18px] flex items-center gap-2 mb-7 px-5">
-        <button className="w-5 h-5 text-[20px] text-gray-400 leading-none">
-          ×
-        </button>
-        <div className="flex-1 h-full border-2 border-[#e5e5ea] bg-gray-50 rounded-full">
-          <div
-            className="h-full bg-gray-300 transition-all duration-500"
-            style={{ width: `${((currentIndex + 1) / questions.length) * 100 - 20}%`}}
-          ></div>
-        </div>
-      </div> */}
-
       <TaskDescription
           header={"Распредели произведения по направлениям"}
           desc={"перетаскивая их влево/вправо"}
@@ -93,8 +101,9 @@ export default function TrueMotion() {
 
       <div
         key={currentIndex}
-        className={`relative w-full h-full transition-all duration-300 ease-in-out 
-          ${isAnimating? "translate-x-full opacity-0" : "translate-x-0 opacity-100"}
+        className={`relative w-full h-full transition-all ease-in-out 
+          ${ isAnimating ? "-translate-y-15 opacity-0 duration-400" : ""}
+          ${ newCardAnimating ? "translate-y-15 opacity-0 duration-400" : "opacity-100"}
           `}
       >
         <div className="w-full h-full pb-50 pt-16 flex flex-col gap-5">
@@ -107,10 +116,11 @@ export default function TrueMotion() {
             dragElastic={0.1}
             style={{ x: motionX, y: motionY }}
             onDragEnd={handleDragEnd}
-            className="h-full w-[80%] mx-auto drop-shadow-lg drop-shadow-gray-500 cursor-grab active:cursor-grabbing "
+            className="h-full w-[80%] mx-auto drop-shadow-lg drop-shadow-gray-500 cursor-grab active:cursor-grabbing"
           >
             <Image
-              src={current.image}
+              // src={current.image}
+              src={current.src}
               alt="question visual"
               width={600}
               height={600}
@@ -119,36 +129,41 @@ export default function TrueMotion() {
             {/* overlays */}
             <motion.div
               style={{ opacity: greenOverlayOpacity }}
-              className={`
-                absolute top-0 left-0 right-0 w-full h-full pointer-events-none rounded-2xl
-                flex items-center justify-center text-6xl text-white bg-black/70
-                `}
-            >Правда</motion.div>
+              className={`absolute top-0 left-0 right-0 w-full h-full pointer-events-none flex items-center justify-center bg-black/70`}
+            >
+              <p className="font-button text-[26px] text-white">{leftOption}</p>
+            </motion.div>
             <motion.div
               style={{ opacity: redOverlayOpacity }}
-              className={`absolute top-0 left-0 w-full h-full rounded-2xl pointer-events-none
-                flex items-center justify-center text-6xl text-white bg-black/70
-              `}
-            >Ложь</motion.div>
+              className={`absolute top-0 left-0 right-0 w-full h-full pointer-events-none flex items-center justify-center bg-black/70`}
+            >
+              <p className="font-button text-[26px] text-white">{rightOption}</p>
+            </motion.div>
           </motion.div>
         </div>
       </div>
 
       {!showExplanation ? (
-        <div
-          className={`absolute bottom-5 left-5 right-5 flex-center flex-col gap-0`}
-        >
+        <div className={`absolute bottom-5 left-5 right-5 flex-center flex-col gap-0`}>
           {/* <Button onClick={() => handleAnswer(false)}>ложь</Button> */}
           {/* <Button onClick={() => handleAnswer(true)}>правда</Button> */}
-          <SwipeButton onClick={() => handleAnswer(false)} left={true}>Импрессионизм</SwipeButton>
-          <SwipeButton onClick={() => handleAnswer(true)} right={true}>постимпрессионизм</SwipeButton>
+          <SwipeButton onClick={() => handleAnswer(false)} left={true}>{leftOption}</SwipeButton>
+          <SwipeButton onClick={() => handleAnswer(true)} right={true}>{rightOption}</SwipeButton>
         </div>
       ) : (
-        <AnswerBoxBottom
-          isCorrect={isCorrect}
-          answer={current.explanation}
-          onClick={() => handleNext()}
-        />
+        <div>
+          <div className={`absolute bottom-5 left-5 right-5 flex-center flex-col gap-0`}>
+            <SwipeButton left={true}>{leftOption}</SwipeButton>
+            <SwipeButton right={true}>{rightOption}</SwipeButton>
+          </div>
+          <AnswerBox
+            isCorrect={isCorrect}
+            isAnimating={isAnimating}
+            newCardAnimating={newCardAnimating}
+            answer={current.explanation}
+            onClick={() => handleNext()}
+          />
+        </div>
       )}
     </div>
   );
@@ -171,7 +186,7 @@ function Button({ children, onClick }) {
 
 function SwipeButton({children, onClick, left = false, right = false}){
   return(
-    <div onClick={onClick} className="select-none w-full flex-center py-2">
+    <div onClick={onClick} className="select-none w-full flex-center py-3.5">
       <div className="cursor-pointer w-full flex justify-between max-w-[320px]">
         {left && <ArrowTestLeft color={"#7B7B7B"}/>}
         <div className="font-button text-ac-gray-light">{children}</div>
@@ -181,7 +196,30 @@ function SwipeButton({children, onClick, left = false, right = false}){
   )
 }
 
-function AnswerBoxBottom({ isCorrect, answer, onClick }) {
+function AnswerBox({ isCorrect, answer, onClick, isAnimating, newCardAnimating }) {
+  return (
+    <div
+      className={`absolute inset-0 bottom-28 top-24 z-10 flex justify-center
+        ${ isAnimating ? "-translate-y-15 duration-400 bg-white" : "bg-white/80"}
+      `}
+    >
+      <div onClick={onClick}
+        className={`w-full flex-center flex-col gap-1 pt-4 px-4 text-left
+          ${ isAnimating ? "opacity-0 duration-400" : "opacity-100"}
+          ${ newCardAnimating ? "opacity-0" : "opacity-0"}
+        `}
+      >
+          <div className={`text-[26px] font-h3 uppercase text-shadow-[0px_0px_6px_rgba(255,255,255,1)] ${ isCorrect ? "text-[#4CAF50]" : "text-[#E46F2B]"}`}>
+            {isCorrect ? "Верно!" : "Не верно"}
+          </div>
+        {!isCorrect && <p className="text-[14px] text-ac-gray-light mb-4">{answer}</p>}
+        {isCorrect && <p className="mb-4 mt-1 text-[26px] font-h3 uppercase text-shadow-[0px_0px_6px_rgba(255,255,255,1)] text-[#4CAF50]">идем дальше</p>}
+      </div>
+    </div>
+  )
+}
+
+function AnswerBoxBottom1({ isCorrect, answer, onClick }) {
   return (
     <div
       className={`absolute bottom-0 left-0 right-0 z-10 flex justify-center`}

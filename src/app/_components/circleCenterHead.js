@@ -4,7 +4,8 @@ import { imgNotFound } from "./imgNotFound";
 
 export default function CircleHead({link, title, desc, src}){
     return(
-        <Link href={link ?? "#"}
+        <Link 
+            href={link ?? "#"}
             className="flex flex-col items-center justify-center gap-6"
         >
             <div className="bg-gray-400 w-[180px] h-[180px] rounded-full overflow-hidden">

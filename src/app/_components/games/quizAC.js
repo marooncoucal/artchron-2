@@ -4,31 +4,39 @@ import Image from "next/image";
 import { useState } from "react"
 import Button1 from "../buttons1";
 import TaskDescription from "../taskDescription";
+import { useRouter } from "next/navigation";
 
-export default function QuizAC({ questions }) {
+export default function QuizAC({ questions, link }) {
 
-    const [currentIndex, setCurrentIndex] = useState(1)
+    const [currentIndex, setCurrentIndex] = useState(0)
     const current = questions[currentIndex]
 
-    const qType = current.type
-    let textQ = false
-    let imgQ = false
-    if (qType === "textField") textQ = true
-    if (qType === "paintings") imgQ = true
+    const qType = current?.type || 'default'
 
-    // const renderContent = () => {
-    //     switch(qType){
-    //         case "textFiled": return <TextQuestion />
-    //         case "paintings": return <PaintingQuestion />
-    //     }
-    // }
-    // return <>{renderContent()}</> 
+    const router = useRouter()
+    const handleNext = () => {
+        setTimeout(() => {
+            if (currentIndex !== questions.length - 1) {
+                setCurrentIndex((prev) => (prev + 1))
+            } else {
+                // setCurrentIndex((prev) => (prev + 1) % questions.length)
+                router.push(link ?? "#")
+            }
+        }, 900)
+    }
 
-    // return <TextQuestion current={current} currentIndex={currentIndex} />
-    return <PaintingQuestion current={current} currentIndex={currentIndex} />
+    const renderContent = () => {
+        switch(qType){
+            case "textField": return <TextQuestion current={current} currentIndex={currentIndex} onClick={()=>handleNext()}/>
+            case "paintings": return <PaintingQuestion current={current} currentIndex={currentIndex} onClick={()=>handleNext()}/>
+            default: return <div className="flex-center">current undefined</div>
+        }
+    }
+    return <>{renderContent()}</> 
+
 }
 
-function TextQuestion({current, currentIndex}){
+function TextQuestion({current, currentIndex, onClick}){
     return(
         <div className="relative w-full h-full flex flex-col items-center">
             {/* img desc */}
@@ -58,12 +66,12 @@ function TextQuestion({current, currentIndex}){
                 </div>
             </div>
             {/* buttons */}
-            <AnswerButtons current={current} variant={"grid"}/>
+            <AnswerButtons current={current} onClick={onClick} variant={"grid"}/>
         </div>
     )
 }
 
-function PaintingQuestion({current, currentIndex}){
+function PaintingQuestion({current, currentIndex, onClick}){
     return(
         <div className="relative w-full h-full flex flex-col items-center">
             <TaskDescription 
@@ -90,12 +98,12 @@ function PaintingQuestion({current, currentIndex}){
                 </div>
             </div>
             {/* buttons */}
-            <AnswerButtons current={current} />
+            <AnswerButtons current={current} onClick={onClick} />
         </div>
     )
 }
 
-function AnswerButtons({current, variant}){
+function AnswerButtons({current, variant, onClick}){
     let stl = ""
     switch (variant){
         case "grid": 
@@ -105,11 +113,73 @@ function AnswerButtons({current, variant}){
             stl = "flex-center flex-col gap-2"
             break;
     }
+
+    const router = useRouter()
+
+    const [disabled, setDisabled] = useState(false)
+    const [selectedIdx, setSelectedIdx] = useState(null)
+    const [correctIdx, setCorrectIdx] = useState(null)
+
+    const handleSelect = (idx) => {
+        if (disabled) return
+        setDisabled(true)
+
+        setSelectedIdx(idx)
+
+        const correctIndex = current.choices.findIndex(c => c.isCorrect)
+        setCorrectIdx(correctIndex)
+        
+        const isRight = current.choices[idx].isCorrect
+
+        setTimeout(() => {
+            if (isRight) {
+                // console.log("answer right")
+                // router.push("/testTypes/swipeSelect")
+            } else {
+                // console.log("answer wrong")
+                setTimeout(() => {
+                    // setSelectedIdx(null)
+                    // setCorrectIdx(null)
+                    // setDisabled(false)
+                    // push if both buttons
+                    // router.push("/testTypes/swipeSelect")
+                }, 1100)
+            }
+            setSelectedIdx(null)
+            setCorrectIdx(null)
+            setDisabled(false)
+        }, isRight ? 600 : 1100)
+    }
+
     return(
-        <div className={`absolute bottom-5 left-5 right-5 ${stl}`}>
-            {current.choices.map( (choice, index) => (
-                <Button1 key={index}>{choice.text}</Button1> 
-            ))}
+        <div onClick={onClick} className={`absolute bottom-5 left-5 right-5 transition-all ${stl}`}>
+            {current.choices.map( (choice, index) => {
+                const isSelected = selectedIdx === index
+                const isCorrectButton = correctIdx === index
+                let buttonVariant = "default"
+
+                // both buttons
+                if (isCorrectButton) {
+                    buttonVariant = "right"
+                } else if (isSelected) {
+                    buttonVariant = choice.isCorrect ? "right" : "wrong"
+                }
+
+                // one button
+                // if (isSelected) {
+                //     buttonVariant = choice.isCorrect ? "right" : "wrong"
+                // }
+                return (
+                    <Button1 
+                        key={index} 
+                        variant={buttonVariant}
+                        onClick={() => handleSelect(index)}
+                        disabled={disabled}
+                    >
+                        {choice.text}
+                    </Button1> 
+                );
+            })}
         </div>
     )
 }

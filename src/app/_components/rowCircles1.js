@@ -5,8 +5,10 @@ import { imgNotFound } from "./imgNotFound";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-export default function RowCircles({ testInfo, desc }) {
-  const rowInfo = testInfo[0]
+export default function RowCircles({ testInfo, desc, subPage }) {
+  const rowInfo = testInfo
+  // const topicSlug = rowInfo.topicSlug
+  console.log(testInfo.topicSlug)
   const link = rowInfo.link
   const title = rowInfo.name
   const fullCount = rowInfo.topics.length ?? 10
@@ -15,7 +17,8 @@ export default function RowCircles({ testInfo, desc }) {
   return (
     <div className="w-full">
       <Link 
-        href={link ?? "#"} 
+        // href={link ?? "#"} 
+        href={`/categories/sections/${testInfo.topicSlug}` ?? "#"} 
         className="flex pt-1 pb-3.5 overflow-hidden"
       >
         <div className="relative flex justify-center ml-20">

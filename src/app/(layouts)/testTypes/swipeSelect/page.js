@@ -1,3 +1,4 @@
+import SwipeSelect2 from "@/app/_components/games/Swipe-select-2"
 import SwipeSelect1 from "@/app/_components/games/Swipe-select-motion"
 
 const inputInfo = [
@@ -14,46 +15,50 @@ const inputInfo = [
       },
       { 
         src: "/testImgs/swipeHor1/vangogh-starryNight.jpg",
-        typeSrc: "vertical",
-        name: "вторая картина",
-        description: "текст о произведении",
-        isCorrect: true 
-      }, // правильный true, остальные false
-      { 
-        src: "/testImgs/swipeHor1/src3.jpg",
         typeSrc: "horizontal",
-        name: "третья картина",
-        description: "текст о произведении",
-        isCorrect: false 
-      },
-    ],
-  },
-  {
-    slug: "question2",
-    question: "второй вопрос",
-    choices: [
-      { 
-        src: "/testImgs/swipeHor1/src4.jpg", 
-        typeSrc: "vertical",
-        name: "первая картина",
+        name: "звездная ночь",
         description: "текст о произведении",
         isCorrect: false 
       },
       { 
-        src: "/testImgs/swipeHor1/src5.jpg",
+        src: "/testImgs/swipeHor1/malevich-kosar.jpg",
         typeSrc: "vertical",
-        name: "вторая картина",
+        name: "косарь",
         description: "текст о произведении",
         isCorrect: true 
       }, // правильный true, остальные false
     ],
-  },
+  }
+  // {
+  //   slug: "question2",
+  //   question: "второй вопрос",
+  //   choices: [
+  //     { 
+  //       src: "/testImgs/swipeHor1/malevich-cowViolin.jpg", 
+  //       typeSrc: "vertical",
+  //       name: "первая картина",
+  //       description: "текст о произведении",
+  //       isCorrect: false 
+  //     },
+  //     { 
+  //       src: "/testImgs/swipeHor1/malevich-portrait.jpg",
+  //       typeSrc: "vertical",
+  //       name: "вторая картина",
+  //       description: "текст о произведении",
+  //       isCorrect: true 
+  //     }, // правильный true, остальные false
+  //   ],
+  // },
 ]
 
 export default function SwipeSelectPage1() {
   return (
     <div className="SwipeSelectPage1 h-full w-full">
-        <SwipeSelect1 inputInfo={inputInfo} />
+        {/* <SwipeSelect1 inputInfo={inputInfo} /> */}
+        <SwipeSelect2 inputInfo={inputInfo} 
+          // link={"/testTypes/sortSections"} 
+          link={"/resultScreen"} 
+        />
     </div>
   )
 }

@@ -12,38 +12,31 @@ const ChoiceLR = {
 ChoiceLR.questions = [
   {
     slug: "question1",
-    src: "/testImgs/ChoiceLR1/src1.jpg",
-    choiceD: ChoiceLR.choiceVariants.leftText,
-    isTrue: false, // left - lie
+    src: "/testImgs/trueTest1/black-square.jpg",
+    choiceD: ChoiceLR.choiceVariants.rightText,
+    isTrue: true, // right - true
     explanation: "текст почему неверно 1",
   },
   {
     slug: "question2",
-    src: "/testImgs/ChoiceLR1/src2.jpg",
-    choiceD: ChoiceLR.choiceVariants.rightText,
-    isTrue: true, // right - true
+    src: "/testImgs/trueTest1/vangogh.jpg",
+    choiceD: ChoiceLR.choiceVariants.leftText,
+    isTrue: false, // left - lie
     explanation: "текст почему неверно 2",
   },
   {
     slug: "question3",
-    src: "/testImgs/ChoiceLR1/src3.jpg",
-    choiceD: ChoiceLR.choiceVariants.rightText,
-    isTrue: true, // right - true
-    explanation: "текст почему неверно 3",
-  },
-  {
-    slug: "question4",
-    src: "/testImgs/ChoiceLR1/src4.jpg",
+    src: "/testImgs/trueTest1/vangogh1.jpg",
     choiceD: ChoiceLR.choiceVariants.leftText,
     isTrue: false, // left - lie
-    explanation: "текст почему неверно 4",
-  },
+    explanation: "текст почему неверно 3",
+  }
 ]
 
 export default function TruePage() {
   return (
     <div className="truePage h-full w-full">
-      <TrueMotion />
+      <TrueMotion inputInfo={ChoiceLR} link={"/testTypes/quiz"}/>
     </div>
   )
 }
