@@ -1,3 +1,5 @@
+import PickPainting1 from "@/app/_components/games/pickPaintingSQR"
+
 const variantsInfo = [
   {
     slug: "question1",
@@ -5,6 +7,10 @@ const variantsInfo = [
     choices: [
       { 
         src: "/testImgs/pickPainting1/src1.jpg", 
+        isCorrect: false 
+      },
+      { 
+        src: "/testImgs/pickPainting1/src2.jpg", 
         isCorrect: false 
       },
       { 
@@ -33,10 +39,14 @@ const variantsInfo = [
         src: "/testImgs/pickPainting1/src6.jpg", 
         isCorrect: true 
       }, // правильный true, остальные false
+      { 
+        src: "/testImgs/pickPainting1/src5.jpg", 
+        isCorrect: false 
+      },
     ],
   },
 ]
 
 export default function PickPaintingrPage() {
-  return <div>pick painting page</div>
+  return <PickPainting1 />
 }

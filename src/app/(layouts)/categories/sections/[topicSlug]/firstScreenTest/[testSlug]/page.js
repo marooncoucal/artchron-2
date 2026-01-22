@@ -4,11 +4,11 @@ import Button1 from "@/app/_components/buttons1";
 import HeaderNav from "@/app/_components/headerNav";
 import { imgNotFound } from "@/app/_components/imgNotFound";
 import NormalTextTest1 from "@/app/_components/normalText";
+import { CMS_URL } from "@/config";
 import Image from "next/image";
 
 async function getTopic(){
-    const remoteData = await fetch("http://localhost:3000/srcData/tests1.json", 
-    { cache: "no-store" })
+    const remoteData = await fetch(CMS_URL + "/srcData/tests1.json", { cache: "no-store" })
     const data = await remoteData.json()
     return data
 }

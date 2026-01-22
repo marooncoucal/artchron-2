@@ -4,7 +4,7 @@ import CategoriesPage1 from "./(layouts)/categories/page";
 
 export default function Home() {
   return (
-    <div className={`home-page-js flex flex-col gap-5 w-full`}>
+    <div className={`home-page-js relative flex flex-col gap-5 w-full`}>
       <CategoriesPage1/>
     </div>
   );

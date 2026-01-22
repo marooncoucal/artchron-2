@@ -116,7 +116,7 @@ export default function TrueMotion({inputInfo, link}) {
             dragElastic={0.1}
             style={{ x: motionX, y: motionY }}
             onDragEnd={handleDragEnd}
-            className="h-full w-[80%] mx-auto drop-shadow-lg drop-shadow-gray-500 cursor-grab active:cursor-grabbing "
+            className="h-full w-[80%] mx-auto drop-shadow-lg drop-shadow-gray-500 cursor-grab active:cursor-grabbing"
           >
             <Image
               // src={current.image}

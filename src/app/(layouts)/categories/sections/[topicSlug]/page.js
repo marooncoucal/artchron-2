@@ -4,10 +4,10 @@ import HeaderNav from "@/app/_components/headerNav";
 import { imgNotFound } from "@/app/_components/imgNotFound";
 
 import { testRowsSrc1 } from "@/app/_components/srcData";
+import { CMS_URL } from "@/config";
 
 async function getTests(){
-    const remoteData = await fetch("http://localhost:3000/srcData/tests1.json", 
-    { cache: "no-store" })
+    const remoteData = await fetch(CMS_URL + "/srcData/tests1.json", { cache: "no-store" })
     const data = await remoteData.json()
     return data
 }

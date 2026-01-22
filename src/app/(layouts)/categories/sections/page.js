@@ -6,10 +6,10 @@ import Link from "next/link";
 
 import { testRowsSrc1 } from "@/app/_components/srcData";
 import BottomNav1 from "@/app/_components/bottomNav";
+import { CMS_URL } from "@/config";
 
 async function getRows(){
-    const remoteData = await fetch("http://localhost:3000/srcData/tests1.json", 
-    { cache: "no-store" })
+    const remoteData = await fetch(CMS_URL + "/srcData/tests1.json", { cache: "no-store" })
     const data = await remoteData.json()
     return data
 }
