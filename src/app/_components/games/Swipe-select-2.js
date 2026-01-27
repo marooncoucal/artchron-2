@@ -105,7 +105,7 @@ export default function SwipeSelect1({ inputInfo, link }) {
     }
 
     return (
-        <div className="relative w-full h-full flex flex-col items-center bg-violet-200">
+        <div className="relative w-full h-full flex flex-col items-center">
             <TaskDescription
                 header={current.question}
                 desc="выбери верный вариант ответа и нажми «готово»"
@@ -113,10 +113,10 @@ export default function SwipeSelect1({ inputInfo, link }) {
 
             <div
                 ref={viewportRef}
-                className="relative flex-1 flex w-full overflow-hidden bg-cyan-200 pb-24"
+                className="relative flex-1 flex w-full overflow-hidde pb-24"
             >
                 <motion.div
-                    className="flex items-center w-max bg-pink-200"
+                    className="flex items-center w-max"
                     style={{
                         x,
                         gap: `${GAP}px`,
@@ -176,38 +176,38 @@ function ImageContainer({ choice }) {
     )
 }
 
-function AnswerContainer({inputInfo, current, activeIndex, onClick}){
-    const choices = current.choices
+// function AnswerContainer({inputInfo, current, activeIndex, onClick}){
+//     const choices = current.choices
 
-    const [showNextButton, setShowNextButton] = useState(false)
-    function handleCheck(idx) {
-        setShowNextButton(true)
-        const isRight = current.choices[idx].isCorrect
-    }
+//     const [showNextButton, setShowNextButton] = useState(false)
+//     function handleCheck(idx) {
+//         setShowNextButton(true)
+//         const isRight = current.choices[idx].isCorrect
+//     }
 
-    const router = useRouter()
-    const handleNext = () => {
-        // setShowNextButton(true)
-        if (currentIndex !== inputInfo.length - 1) {
-            setCurrentIndex((prev) => (prev + 1))
-        } else {
-            setCurrentIndex(0)
-            router.push(link ?? "#")
-        }
-    }
+//     const router = useRouter()
+//     const handleNext = () => {
+//         // setShowNextButton(true)
+//         if (currentIndex !== inputInfo.length - 1) {
+//             setCurrentIndex((prev) => (prev + 1))
+//         } else {
+//             setCurrentIndex(0)
+//             router.push(link ?? "#")
+//         }
+//     }
 
-    return(
-    <div className="absolute bottom-[2vh] left-5 right-5 flex flex-col gap-[3vh]">
-        <div className="text-center px-6">
-            <h2 className="font-button text-ac-gray">
-                {choices[activeIndex].name}
-            </h2>
-            {showNextButton && <p className="text-[12px] leading-[14px] text-ac-gray-light mt-1">
-                {choices[activeIndex].description}
-            </p>}
-        </div>
-        {!showNextButton && <Button1 onClick={() => handleCheck(activeIndex)}>проверить</Button1>}
-        {showNextButton && <Button1 onClick={handleNext}>дальше</Button1>}
-    </div>
-    )
-}
+//     return(
+//     <div className="absolute bottom-[2vh] left-5 right-5 flex flex-col gap-[3vh]">
+//         <div className="text-center px-6">
+//             <h2 className="font-button text-ac-gray">
+//                 {choices[activeIndex].name}
+//             </h2>
+//             {showNextButton && <p className="text-[12px] leading-[14px] text-ac-gray-light mt-1">
+//                 {choices[activeIndex].description}
+//             </p>}
+//         </div>
+//         {!showNextButton && <Button1 onClick={() => handleCheck(activeIndex)}>проверить</Button1>}
+//         {showNextButton && <Button1 onClick={handleNext}>дальше</Button1>}
+//     </div>
+//     )
+// }

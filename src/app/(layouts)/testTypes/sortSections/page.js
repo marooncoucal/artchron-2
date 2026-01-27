@@ -10,10 +10,10 @@ const inputInfo = {
 }
 
 inputInfo.questions = [
-  {
-    src: "/testImgs/sortSections1/malevich-blackSquare.jpg",
-    section: inputInfo.sortSections.author1,
-  },
+  // {
+  //   src: "/testImgs/sortSections1/malevich-blackSquare.jpg",
+  //   section: inputInfo.sortSections.author1,
+  // },
   {
     src: "/testImgs/sortSections1/malevich-cowViolin.jpg",
     section: inputInfo.sortSections.author1,
@@ -22,18 +22,18 @@ inputInfo.questions = [
     src: "/testImgs/sortSections1/malevich-kosar.jpg",
     section: inputInfo.sortSections.author1,
   },
-  {
-    src: "/testImgs/sortSections1/malevich-portrait.jpg",
-    section: inputInfo.sortSections.author1,
-  },
-  {
-    src: "/testImgs/sortSections1/vangogh-portrait.jpg",
-    section: inputInfo.sortSections.author2,
-  },
-  {
-    src: "/testImgs/sortSections1/vangogh-starryNight.jpg",
-    section: inputInfo.sortSections.author2,
-  },
+  // {
+  //   src: "/testImgs/sortSections1/malevich-portrait.jpg",
+  //   section: inputInfo.sortSections.author1,
+  // },
+  // {
+  //   src: "/testImgs/sortSections1/vangogh-portrait.jpg",
+  //   section: inputInfo.sortSections.author2,
+  // },
+  // {
+  //   src: "/testImgs/sortSections1/vangogh-starryNight.jpg",
+  //   section: inputInfo.sortSections.author2,
+  // },
   {
     src: "/testImgs/sortSections1/vangogh-terrace.jpg",
     section: inputInfo.sortSections.author2,
@@ -42,8 +42,10 @@ inputInfo.questions = [
 
 export default function SortSectionsPage1() {
   return (
-    <div className="px-5 w-full h-full flex flex-col justify-center items-center gap-5">
-      <SortSections1 inputInfo={inputInfo} />
+    <div className="relative w-full h-full flex flex-col justify-center items-center gap-5 overflow-hidden">
+      <SortSections1 inputInfo={inputInfo} 
+        // link={"/testTypes/sortSections"}
+      />
       {/* <SortSections2/> */}
     </div> 
   )

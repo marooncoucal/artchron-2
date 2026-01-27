@@ -44,7 +44,9 @@ const quizInfo = [
 export default function QuizPage() {
   return(
     <>    
-      <QuizAC questions={quizInfo} link={"/testTypes/swipeSelect"}/>
+      <QuizAC questions={quizInfo} 
+        link={"/testTypes/swipeSelect"}
+      />
       {/* <Quiz /> */}
       {/* <Podbor /> */}
     </>

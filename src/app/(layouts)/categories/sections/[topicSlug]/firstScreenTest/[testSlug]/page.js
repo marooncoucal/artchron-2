@@ -52,7 +52,7 @@ export default async function TopicPage({params}){
                 <p className="font-main-text text-ac-gray-light/80 pt-1 h-[36px] line-clamp-2">{desc}</p>
             </div>
             <div className="flex items-center gap-1 pt-4">
-                <Button1 link={"/testTypes/true" ?? "#"}>{textButton}</Button1>
+                <Button1 link={"/testTypes/pickPainting" ?? "#"}>{textButton}</Button1>
                 <div className={`h-11 aspect-square ${circleColor} rounded-full`}></div>
             </div>
         </div>

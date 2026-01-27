@@ -38,11 +38,11 @@ export default function SortSections2() {
   },[])
   
   // placed[src] = "author1" | "author2" | null
-  const [placed, setPlaced] = useState({});
+  const [placed, setPlaced] = useState({})
 
-  const area1Ref = useRef(null);
-  const area2Ref = useRef(null);
-  const spawnRef = useRef(null);
+  const area1Ref = useRef(null)
+  const area2Ref = useRef(null)
+  const spawnRef = useRef(null)
 
   /** Runs onDragEnd for every image */
   const handleDrop = (src, x, y, resetFn) => {
@@ -70,7 +70,7 @@ export default function SortSections2() {
 
     // dropped outside → remove placement → animate back to SPAWN
     setPlaced((p) => {
-      const copy = { ...p };
+      const copy = { ...p }
       delete copy[src];
       return copy;
     });
@@ -81,14 +81,14 @@ export default function SortSections2() {
   const allPlaced = Object.keys(placed).length === allImages.length;
 
   return (
-    <div className="h-full w-full flex flex-col gap-4">
+    <div className="h-full w-full flex flex-col gap-4 overflow-hidden">
       <TaskDescription 
         header={"Перед тобой произведения искусства, которые принадлежат двум разным направлениям"}
         desc={"перетаскивай их, чтобы распределить"}
       />
 
       {/* Answer Areas */}
-      <div className="h-full w-full gap-4 flex flex-col pb-10">
+      <div className="h-full w-full gap-2 flex flex-col pb-24">
         <div
           ref={area1Ref}
           className="AnswerArea1 flex flex-1 flex-wrap content-start items-start text-gray-400 border-2 rounded-xl border-dashed border-gray-400 p-3 gap-3"
@@ -127,7 +127,7 @@ export default function SortSections2() {
       </div>
 
       {/* SPAWN AREA */}
-      <div ref={spawnRef} className="ImgSpawnArea absolute -bottom-50 flex flex-wrap gap-3">
+      <div ref={spawnRef} className="ImgSpawnArea bg-red-200 absolute left-5 right-5 bottom-0 h-20 flex flex-wrap gap-3">
         {allImages
           .filter((img) => !placed[img.src])
           .map((img) => (
@@ -161,7 +161,7 @@ function Painting({ img, onDrop }) {
 
     const reset = () => {
       animate(ref.current, { x: origin.current.x, y: origin.current.y }, { duration: 0.25 });
-    };
+    }
 
     onDrop(img.src, point.x, point.y, reset);
   };

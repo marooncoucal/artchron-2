@@ -28,7 +28,7 @@ const inputInfo = [
         isCorrect: true 
       }, // правильный true, остальные false
     ],
-  }
+  },
   // {
   //   slug: "question2",
   //   question: "второй вопрос",
@@ -53,11 +53,12 @@ const inputInfo = [
 
 export default function SwipeSelectPage1() {
   return (
-    <div className="SwipeSelectPage1 h-full w-full">
+    <div className="SwipeSelectPage1 h-full w-full overflow-hidden">
         {/* <SwipeSelect1 inputInfo={inputInfo} /> */}
         <SwipeSelect2 inputInfo={inputInfo} 
           // link={"/testTypes/sortSections"} 
-          link={"/resultScreen"} 
+          link={"/testTypes/true"} 
+          // link={"/resultScreen"} 
         />
     </div>
   )

@@ -13,8 +13,8 @@ export default function HeaderNav({
     if (!currentCount) currentCount = 4
     const progress = Math.round(currentCount / Math.max(1, fullCount) * 100)
     return (
-        <div className={`navBack fixed top-0 left-0 right-0 z-1000 pt-4 pb-10 px-4 flex items-center justify-between gap-6 ${grad}`}>
-            <div className="w-[48px] h-[48px]">{hasBackButton && <BackButton />}</div>
+        <div className={`navBack absolute top-0 left-0 right-0 z-1000 pt-4 pb-10 px-4 flex items-center justify-between gap-6 ${grad}`}>
+            <div className="w-[48px] h-[48px] aspect-square select-none">{hasBackButton && <BackButton />}</div>
             {header && <div className='w-full font-main-text font-medium text-center text-[20px] leading-5 text-gray-500'>{header ?? "header"}</div>}
             {hasProgress &&
                 <div className="wrapperProgress w-full flex-center flex-col gap-1.5 pb-3">
@@ -24,7 +24,7 @@ export default function HeaderNav({
                     </div>
                 </div>
             }
-            <div className="w-[48px] h-[48px]">{link && <ExitCloseButton link={link ?? "#"} />}</div>
+            <div className="w-[48px] h-[48px] aspect-square select-none">{link && <ExitCloseButton link={link ?? "#"} />}</div>
         </div>
     )
 }

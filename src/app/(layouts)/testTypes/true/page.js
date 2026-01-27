@@ -24,19 +24,22 @@ ChoiceLR.questions = [
     isTrue: false, // left - lie
     explanation: "текст почему неверно 2",
   },
-  {
-    slug: "question3",
-    src: "/testImgs/trueTest1/vangogh1.jpg",
-    choiceD: ChoiceLR.choiceVariants.leftText,
-    isTrue: false, // left - lie
-    explanation: "текст почему неверно 3",
-  }
+  // {
+  //   slug: "question3",
+  //   src: "/testImgs/trueTest1/vangogh1.jpg",
+  //   choiceD: ChoiceLR.choiceVariants.leftText,
+  //   isTrue: false, // left - lie
+  //   explanation: "текст почему неверно 3",
+  // }
 ]
 
 export default function TruePage() {
   return (
     <div className="truePage h-full w-full">
-      <TrueMotion inputInfo={ChoiceLR} link={"/testTypes/quiz"}/>
+      <TrueMotion inputInfo={ChoiceLR} 
+        link={"/resultScreen"} 
+        // link={"/testTypes/sortSections"}
+      />
     </div>
   )
 }
