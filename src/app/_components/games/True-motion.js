@@ -199,7 +199,7 @@ function SwipeButton({children, onClick, left = false, right = false}){
 function AnswerBox({ isCorrect, answer, onClick, isAnimating, newCardAnimating }) {
   return (
     <div
-      className={`absolute inset-0 bottom-28 top-24 z-10 flex justify-center
+      className={`fixed inset-0 bottom-28 top-36 z-10 flex justify-center
         ${ isAnimating ? "-translate-y-15 duration-400 bg-white" : "bg-white/85"}
       `}
     >
@@ -212,7 +212,7 @@ function AnswerBox({ isCorrect, answer, onClick, isAnimating, newCardAnimating }
         <div className={`text-[26px] font-h3 uppercase text-shadow-[0px_0px_6px_rgba(255,255,255,1)] ${ isCorrect ? "text-[#4CAF50]" : "text-[#E46F2B]"}`}>
           {isCorrect ? "Верно!" : "Не верно"}
         </div>
-        {!isCorrect && <p className="text-[14px] text-ac-gray-light mt-2 mb-4 px-[8vh]">{answer}</p>}
+        {!isCorrect && <p className="text-[14px] text-ac-gray-light mt-2 mb-4 px-[8vh] max-w-[480px]">{answer}</p>}
         {isCorrect && <p className="mb-4 mt-1 text-[26px] font-h3 uppercase text-shadow-[0px_0px_6px_rgba(255,255,255,1)] text-[#4CAF50]">идем дальше</p>}
       </div>
     </div>

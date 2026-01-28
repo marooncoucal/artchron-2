@@ -19,7 +19,7 @@ export default function BottomNav1(){
                 <Link href="/testTypes/swipeSelect">HorScroll</Link>
                 <Link href="/resultScreen">Result</Link>
             </div> */}
-            <Link href="/welcomeLogin" className='w-[28px] h-[28px]'>
+            <Link href="#" className='w-[28px] h-[28px]'>
                 <IconLogin color={"#ccc"} />
             </Link>
         </div>

@@ -3,19 +3,6 @@ import Quiz from "@/app/_components/games/Quiz";
 import QuizAC from "@/app/_components/games/quizAC";
 
 const quizInfo = [
-    {
-    slug: "question3",
-    type: "textField", // где вопрос текстовый
-    src: "/testImgs/quiz1/cover2.jpg", // или задник или основная к вопросу (по типу)
-    question: "Как называлась выставка, параллельная официальной, на которой были представлены полотна и скульптуры импрессионистов?",
-    choiceBoxStyle: "",
-    choices: [
-      { text: "«Утвердители нового искусства»", isCorrect: false},
-      { text: "«Четыре искусства»", isCorrect: false},
-      { text: "«Салон отверженных»", isCorrect: true}, // правильный true, остальные false
-      { text: "«Мамонтовский художественный кружок»", isCorrect: false}, 
-    ],
-  },
   {
     slug: "question1",
     type: "textField", // где вопрос текстовый
@@ -40,6 +27,19 @@ const quizInfo = [
       { text: "Эдгару Дега", isCorrect: true}, // правильный true, остальные false
       { text: "Огюсту Ренуару", isCorrect: false},
       { text: "Эдуарду Мане", isCorrect: false},
+    ],
+  },
+  {
+    slug: "question3",
+    type: "textField", // где вопрос текстовый
+    src: "/testImgs/quiz1/cover2.jpg", // или задник или основная к вопросу (по типу)
+    question: "Как называлась выставка, параллельная официальной, на которой были представлены полотна и скульптуры импрессионистов?",
+    choiceBoxStyle: "",
+    choices: [
+      { text: "«Утвердители нового искусства»", isCorrect: false},
+      { text: "«Четыре искусства»", isCorrect: false},
+      { text: "«Салон отверженных»", isCorrect: true}, // правильный true, остальные false
+      { text: "«Мамонтовский художественный кружок»", isCorrect: false}, 
     ],
   },
   {
