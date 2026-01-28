@@ -71,7 +71,7 @@ export default function SwipeSelect1({ inputInfo, link }) {
         let offset = sidePadding.left
         const centers = []
 
-        // measure centers INCLUDING padding
+        // measure centers w padding
         itemRefs.current.forEach(el => {
             const width = el.offsetWidth
             const center = offset + width / 2
@@ -165,8 +165,22 @@ export default function SwipeSelect1({ inputInfo, link }) {
 
 function ImageContainer({ choice }) {
     const isVertical = choice.typeSrc === "vertical"
+    let aspectHeight, aspectWidth
+    if (isVertical) {
+        aspectHeight = choice.aspectHeight ?? "360"
+        aspectWidth = choice.aspectWidth ?? "220"
+    } else {
+        aspectHeight = choice.aspectHeight ?? "260"
+        aspectWidth = choice.aspectWidth ?? "320"
+    }
+    let aspectR = "aspect-[" + aspectWidth + "/" + aspectHeight + "]"
+    console.log(aspectR)
     return (
-        <div className={`${isVertical ? "aspect-[220/360] h-[44vh]" : "aspect-[320/260] h-[30vh]"} drop-shadow-lg drop-shadow-ac-gray-light/60`}>
+        <div className={`${isVertical ? 'h-[44vh]' : 'h-[30vh]'} drop-shadow-lg drop-shadow-ac-gray-light/60`}
+            style={{ aspectRatio: `${aspectWidth}/${aspectHeight}` }}
+        >
+        {/* <div className={`aspect-[${aspectWidth}/${aspectHeight}] ${isVertical ? 'h-[44vh]' : 'h-[30vh]'} drop-shadow-lg drop-shadow-ac-gray-light/60`}> */}
+        {/* <div className={`${isVertical ? `aspect-[220/360] h-[44vh]` : "aspect-[320/260] h-[30vh]"} drop-shadow-lg drop-shadow-ac-gray-light/60`}> */}
             <Image
                 src={choice.src}
                 alt={choice.name}
