@@ -22,7 +22,7 @@ export default function QuizAC({ questions, link }) {
                 // setCurrentIndex((prev) => (prev + 1) % questions.length)
                 router.push(link ?? "#")
             }
-        }, 900)
+        }, 910)
     }
 
     const renderContent = () => {
@@ -37,6 +37,10 @@ export default function QuizAC({ questions, link }) {
 }
 
 function TextQuestion({current, currentIndex, onClick}){
+    const src = current.src
+    const question = current.question
+    const choiceBoxStyle = current.choiceBoxStyle ?? ""
+    const imgPadB = choiceBoxStyle === "grid" ? 144 : 256
     return(
         <div className="relative w-full h-full flex flex-col items-center">
             {/* img desc */}
@@ -44,10 +48,12 @@ function TextQuestion({current, currentIndex, onClick}){
 
                 className={`relative w-full h-full transition-all duration-300 ease-in-out `}
             >
-                <div className="w-full h-full pb-36 flex flex-col gap-5 pointer-events-none drop-shadow-lg drop-shadow-gray-500">
+                <div className="w-full h-full flex flex-col gap-5 pointer-events-none drop-shadow-lg drop-shadow-gray-500"
+                    style={{paddingBottom: imgPadB }}
+                >
                     <div className="relative h-full w-[90%] mx-auto">
                         <Image
-                            src={current.src}
+                            src={src}
                             alt="question visual"
                             width={600}
                             height={600}
@@ -55,7 +61,7 @@ function TextQuestion({current, currentIndex, onClick}){
                         />
                         {/* question text */}
                         <div className="absolute inset-0 flex-center font-benzin text-white uppercase ">
-                            <p className="px-2 text-center overflow-hidden text-[22px] leading-[25px] wrap-break-word">{current.question}</p>
+                            <p className="px-2 text-center overflow-hidden text-[22px] leading-[25px] wrap-break-word">{question}</p>
                         </div>
                         <div className="absolute bottom-3 left-0 right-0 flex-center opacity-80">
                             <p className="font-light text-[12px] leading-[14px] text-center text-white">выбери верный вариант ответа</p>
@@ -66,16 +72,20 @@ function TextQuestion({current, currentIndex, onClick}){
                 </div>
             </div>
             {/* buttons */}
-            <AnswerButtons current={current} onClick={onClick} variant={"grid"}/>
+            <AnswerButtons current={current} onClick={onClick} variant={choiceBoxStyle}/>
         </div>
     )
 }
 
 function PaintingQuestion({current, currentIndex, onClick}){
+    const src = current.src
+    const question = current.question ?? "text not found"
+    const choiceBoxStyle = current.choiceBoxStyle ?? ""
+    const imgPadB = choiceBoxStyle === "grid" ? 144 : 256
     return(
         <div className="relative w-full h-full flex flex-col items-center">
             <TaskDescription 
-                header={current.question ?? "text not found"}
+                header={question}
                 desc={"выбери верный вариант ответа"}
             />
             {/* img */}
@@ -83,10 +93,12 @@ function PaintingQuestion({current, currentIndex, onClick}){
                 key={currentIndex}
                 className={`relative w-full h-full transition-all duration-300 ease-in-out `}
             >
-                <div className="w-full h-full pb-64 pt-6 flex flex-col gap-5 pointer-events-none drop-shadow-lg drop-shadow-gray-500">
+                <div className="w-full h-full pb-64 pt-6 flex flex-col gap-5 pointer-events-none drop-shadow-lg drop-shadow-gray-500"
+                    style={{paddingBottom: imgPadB}}
+                >
                     <div className="relative h-full w-[80%] mx-auto ">
                         <Image
-                            src={current.src}
+                            src={src}
                             alt="question visual"
                             width={600}
                             height={600}
@@ -98,7 +110,7 @@ function PaintingQuestion({current, currentIndex, onClick}){
                 </div>
             </div>
             {/* buttons */}
-            <AnswerButtons current={current} onClick={onClick} />
+            <AnswerButtons current={current} onClick={onClick} variant={choiceBoxStyle} />
         </div>
     )
 }
@@ -143,12 +155,12 @@ function AnswerButtons({current, variant, onClick}){
                     // setDisabled(false)
                     // push if both buttons
                     // router.push("/testTypes/swipeSelect")
-                }, 1100)
+                }, 900)
             }
             setSelectedIdx(null)
             setCorrectIdx(null)
             setDisabled(false)
-        }, isRight ? 600 : 1100)
+        }, isRight ? 600 : 900)
     }
 
     return(
@@ -175,6 +187,7 @@ function AnswerButtons({current, variant, onClick}){
                         variant={buttonVariant}
                         onClick={() => handleSelect(index)}
                         disabled={disabled}
+                        // className={`whitespace-nowrap overflow-hidden`}
                     >
                         {choice.text}
                     </Button1> 

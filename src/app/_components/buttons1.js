@@ -17,12 +17,12 @@ export default function Button1({children, link, variant, className, onClick, di
             break;
     }
     return (
-        <div className={`rounded-full w-full h-full flex ${stl} ${className} select-none cursor-pointer`} >
+        <div className={`rounded-full w-full h-full flex ${stl} select-none cursor-pointer`} >
             {
                 link && !disabled ? (
-                    <Link href={link ?? "#"} className={`font-button py-3 rounded-full w-full`}>{children}</Link>
+                    <Link href={link ?? "#"} className={`${className} font-button py-3 px-2 rounded-full w-full flex-center`}>{children}</Link>
                 ) : (
-                    <div onClick={!disabled ? onClick : undefined} className={`font-button py-3 rounded-full w-full`}>{children}</div>
+                    <div onClick={!disabled ? onClick : undefined} className={`${className} font-button py-3 px-2 rounded-full w-full flex-center`}>{children}</div>
                 )
             }
         </div>

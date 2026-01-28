@@ -131,13 +131,13 @@ export default function TrueMotion({inputInfo, link}) {
               style={{ opacity: greenOverlayOpacity }}
               className={`absolute top-0 left-0 right-0 w-full h-full pointer-events-none flex items-center justify-center bg-black/70`}
             >
-              <p className="font-button text-[26px] text-white">{leftOption}</p>
+              <p className="font-button text-[26px] text-white">{rightOption}</p>
             </motion.div>
             <motion.div
               style={{ opacity: redOverlayOpacity }}
               className={`absolute top-0 left-0 right-0 w-full h-full pointer-events-none flex items-center justify-center bg-black/70`}
             >
-              <p className="font-button text-[26px] text-white">{rightOption}</p>
+              <p className="font-button text-[26px] text-white">{leftOption}</p>
             </motion.div>
           </motion.div>
         </div>
@@ -153,8 +153,8 @@ export default function TrueMotion({inputInfo, link}) {
       ) : (
         <div>
           <div className={`absolute bottom-5 left-5 right-5 flex-center flex-col gap-0`}>
-            <SwipeButton left={true}>{leftOption}</SwipeButton>
-            <SwipeButton right={true}>{rightOption}</SwipeButton>
+            <SwipeButton onClick={() => handleNext()} left={true}>{leftOption}</SwipeButton>
+            <SwipeButton onClick={() => handleNext()} right={true}>{rightOption}</SwipeButton>
           </div>
           <AnswerBox
             isCorrect={isCorrect}
@@ -200,48 +200,48 @@ function AnswerBox({ isCorrect, answer, onClick, isAnimating, newCardAnimating }
   return (
     <div
       className={`absolute inset-0 bottom-28 top-24 z-10 flex justify-center
-        ${ isAnimating ? "-translate-y-15 duration-400 bg-white" : "bg-white/80"}
+        ${ isAnimating ? "-translate-y-15 duration-400 bg-white" : "bg-white/85"}
       `}
     >
       <div onClick={onClick}
-        className={`w-full flex-center flex-col gap-1 pt-4 px-4 text-left
+        className={`w-full flex-center flex-col gap-1 text-left
           ${ isAnimating ? "opacity-0 duration-400" : "opacity-100"}
           ${ newCardAnimating ? "opacity-0" : "opacity-0"}
         `}
       >
-          <div className={`text-[26px] font-h3 uppercase text-shadow-[0px_0px_6px_rgba(255,255,255,1)] ${ isCorrect ? "text-[#4CAF50]" : "text-[#E46F2B]"}`}>
-            {isCorrect ? "Верно!" : "Не верно"}
-          </div>
-        {!isCorrect && <p className="text-[14px] text-ac-gray-light mb-4">{answer}</p>}
+        <div className={`text-[26px] font-h3 uppercase text-shadow-[0px_0px_6px_rgba(255,255,255,1)] ${ isCorrect ? "text-[#4CAF50]" : "text-[#E46F2B]"}`}>
+          {isCorrect ? "Верно!" : "Не верно"}
+        </div>
+        {!isCorrect && <p className="text-[14px] text-ac-gray-light mt-2 mb-4 px-[8vh]">{answer}</p>}
         {isCorrect && <p className="mb-4 mt-1 text-[26px] font-h3 uppercase text-shadow-[0px_0px_6px_rgba(255,255,255,1)] text-[#4CAF50]">идем дальше</p>}
       </div>
     </div>
   )
 }
 
-function AnswerBoxBottom1({ isCorrect, answer, onClick }) {
-  return (
-    <div
-      className={`absolute bottom-0 left-0 right-0 z-10 flex justify-center`}
-    >
-      <div
-        className="w-full rounded-t-[10px] bg-white pt-4 px-4 text-left drop-shadow-[0px_-10px_10px_rgba(0,0,0,0.15)]"
-      >
-        <div className="flex items-center gap-2 mb-2">
-          <span className={`text-[18px] font-semibold ${ isCorrect ? "text-[#4CAF50]" : "text-[#E46F2B]"}`}>
-            {isCorrect ? "✓ Верно" : "× Неверно"}
-          </span>
-        </div>
-        <p className="text-base mb-4">
-          <span className="font-bold">Правильный ответ:</span> {answer}
-        </p>
-        <button
-          onClick={onClick}
-          className={`w-full h-[45px] ${ isCorrect ? "bg-[#4CAF50]" : "bg-[#E46F2B]"} text-white font-bold mb-4`}
-        >
-          ПОНЯТНО
-        </button>
-      </div>
-    </div>
-  )
-}
+// function AnswerBoxBottom1({ isCorrect, answer, onClick }) {
+//   return (
+//     <div
+//       className={`absolute bottom-0 left-0 right-0 z-10 flex justify-center`}
+//     >
+//       <div
+//         className="w-full rounded-t-[10px] bg-white pt-4 px-4 text-left drop-shadow-[0px_-10px_10px_rgba(0,0,0,0.15)]"
+//       >
+//         <div className="flex items-center gap-2 mb-2">
+//           <span className={`text-[18px] font-semibold ${ isCorrect ? "text-[#4CAF50]" : "text-[#E46F2B]"}`}>
+//             {isCorrect ? "✓ Верно" : "× Неверно"}
+//           </span>
+//         </div>
+//         <p className="text-base mb-4">
+//           <span className="font-bold">Правильный ответ:</span> {answer}
+//         </p>
+//         <button
+//           onClick={onClick}
+//           className={`w-full h-[45px] ${ isCorrect ? "bg-[#4CAF50]" : "bg-[#E46F2B]"} text-white font-bold mb-4`}
+//         >
+//           ПОНЯТНО
+//         </button>
+//       </div>
+//     </div>
+//   )
+// }

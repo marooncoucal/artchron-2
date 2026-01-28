@@ -3,15 +3,17 @@ import HeaderNav from "@/app/_components/headerNav";
 import ProgressWheel1 from "@/app/_components/progressWheel";
 
 export default function resultTestPage1() {
+  const resultNumber = 119
+  const maxResult = 178
   return (
     <div className="resultTestPage1 h-full w-full">
         <HeaderNav hasBackButton={false} link={"/"} header={"Результаты"}/>
         <div className="px-4 pt-20 pb-40 gap-10 flex-col flex-center h-full">
           <div className="aspect-square w-full max-w-[400px]">
-            <ProgressWheel1 resultNumber={109} maxResult={178}/>
+            <ProgressWheel1 resultNumber={resultNumber} maxResult={maxResult}/>
           </div>
-          <ResultDescription resultNumber={109} maxResult={178}/>
-          <div className="fixed right-4 left-4 bottom-5 gap-3 flex flex-col">
+          <ResultDescription resultNumber={resultNumber} maxResult={maxResult}/>
+          <div className="absolute right-4 left-4 bottom-5 gap-3 flex flex-col">
             <Button1 link={"/"} variant={"default"}>Сохранить и выйти</Button1>
             <Button1 link={"#"} variant={"border"}>пройти еще раз</Button1>
           </div>
