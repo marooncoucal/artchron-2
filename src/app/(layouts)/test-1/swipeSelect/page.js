@@ -3,6 +3,39 @@ import SwipeSelect1 from "@/app/_components/games/Swipe-select-motion"
 
 const inputInfo = [
   {
+    slug: "question3",
+    question: "Какую из этих картин написл Альфред Сислей?",
+    choices: [
+      {
+        src: "/testImgs/swipeHor1/scroll6.jpg",
+        typeSrc: "vertical",
+        aspectHeight: "",
+        aspectWidth: "",
+        name: "«Абсент» («Люди в кафе»), 1876",
+        description: "На этом полотне Дега запечатлел сцену из жизни небогатых парижан, изобразив женщину, перед которой стоит не первый бокал с абсентом и мужчину с признаками похмелья.",
+        isCorrect: false
+      },
+      {
+        src: "/testImgs/swipeHor1/scroll7.jpg",
+        typeSrc: "horizontal",
+        aspectHeight: "",
+        aspectWidth: "",
+        name: "«Регата в Молези», 1874",
+        description: "На этой картине, написанной в Великобритании, Сислей постарался уловить трепетание флагов на ветру и сопутствующую игру света и тени",
+        isCorrect: true
+      }, // правильный true, остальные false
+      {
+        src: "/testImgs/swipeHor1/scroll8.jpg",
+        typeSrc: "vertical",
+        aspectHeight: "",
+        aspectWidth: "",
+        name: "«Купальщики», 1869",
+        description: "Это работа Жана-Фредерика Базиля в стиле раннего импрессионизма, в которой он запечатлел мужскую наготу в повседневной жизни",
+        isCorrect: false
+      }, 
+    ],
+  },
+  {
     slug: "question1",
     question: "Какая из этих картин выполнена в стиле импрессионизм?",
     choices: [
@@ -27,33 +60,6 @@ const inputInfo = [
         description: "Картина французского художника Клода Моне. Оригинальная, частично утраченная картина хранится в Музее Орсе в Париже.",
         isCorrect: true
       }, // правильный true, остальные false
-    ],
-  },
-   {
-    slug: "question3",
-    question: "Какую из этих картин написл Альфред Сислей?",
-    choices: [
-      {
-        src: "/testImgs/swipeHor1/scroll6.jpg",
-        typeSrc: "vertical",
-        name: "«Абсент» («Люди в кафе»), 1876",
-        description: "На этом полотне Дега запечатлел сцену из жизни небогатых парижан, изобразив женщину, перед которой стоит не первый бокал с абсентом и мужчину с признаками похмелья.",
-        isCorrect: false
-      },
-      {
-        src: "/testImgs/swipeHor1/scroll7.jpg",
-        typeSrc: "horizontal",
-        name: "«Регата в Молези», 1874",
-        description: "На этой картине, написанной в Великобритании, Сислей постарался уловить трепетание флагов на ветру и сопутствующую игру света и тени",
-        isCorrect: true
-      }, // правильный true, остальные false
-      {
-        src: "/testImgs/swipeHor1/scroll8.jpg",
-        typeSrc: "vertical",
-        name: "«Купальщики», 1869",
-        description: "Это работа Жана-Фредерика Базиля в стиле раннего импрессионизма, в которой он запечатлел мужскую наготу в повседневной жизни",
-        isCorrect: false
-      }, 
     ],
   },
   {

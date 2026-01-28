@@ -142,12 +142,13 @@ export default function SwipeSelect1({ inputInfo, link }) {
             </div>
 
             {/* <AnswerContainer inputInfo={inputInfo} current={current} activeIndex={activeIndex} onClick={handleNext}/> */}
-            <div className="absolute bottom-[2vh] left-5 right-5 flex flex-col gap-[3vh]">
-                <div className="text-center px-6">
+            <div className="z-10 absolute bottom-0 left-0 right-0 bg-linear-to-t from-0% from-white via-70% via-white to-100% to-white/0">
+            <div className="px-4 pb-[2vh] pt-[10vh] flex flex-col gap-[3vh]">
+                <div className="flex flex-col gap-[0.5vh]">
                     {!showNextButton && <h2 className={`font-button text-ac-gray`}>
                         {choices[activeIndex].name}
                     </h2>}
-                    {showNextButton && <h2 className={`font-button ${current.choices[activeIndex].isCorrect ? "text-ac-lime-300" : "text-ac-orange-600"} `}>
+                    {showNextButton && <h2 className={`font-button text-center ${current.choices[activeIndex].isCorrect ? "text-ac-lime-300" : "text-ac-orange-600"} `}>
                         {choices[activeIndex].name}
                     </h2>}
                     {showNextButton && !current.choices[activeIndex].isCorrect && <p className="text-[12px] leading-[14px] text-ac-gray mt-1">
@@ -156,6 +157,7 @@ export default function SwipeSelect1({ inputInfo, link }) {
                 </div>
                 {!showNextButton && <Button1 onClick={() => handleCheck(activeIndex)}>проверить</Button1>}
                 {showNextButton && <Button1 onClick={() => handleNext()}>дальше</Button1>}
+            </div>
             </div>
         </div>
     )
