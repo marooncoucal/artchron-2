@@ -3,7 +3,7 @@ import SwipeSelect1 from "@/app/_components/games/Swipe-select-motion"
 
 const inputInfo = [
     {
-    slug: "question2",
+    slug: "question1",
     question: "Какая из этих картин выполнена в стиле постимпрессионизм?",
     choices: [
       {
@@ -27,7 +27,7 @@ const inputInfo = [
     ],
   },
   {
-    slug: "question3",
+    slug: "question2",
     question: "Какую из этих картин написл Альфред Сислей?",
     choices: [
       {
@@ -60,7 +60,7 @@ const inputInfo = [
     ],
   },
   {
-    slug: "question1",
+    slug: "question3",
     question: "Какая из этих картин выполнена в стиле импрессионизм?",
     choices: [
       {
