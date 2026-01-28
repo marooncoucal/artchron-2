@@ -7,21 +7,21 @@ const inputInfo = [
     question: "Какая из этих картин выполнена в стиле импрессионизма?",
     choices: [
       { 
-        src: "/testImgs/swipeHor1/zhatva-fuko.jpg", 
+        src: "/testImgs/swipeHor0/zhatva-fuko.jpg", 
         typeSrc: "horizontal",
         name: "«Жатва в Монфуко», 1876",
         description: "текст о произведении",
         isCorrect: false 
       },
       { 
-        src: "/testImgs/swipeHor1/vangogh-starryNight.jpg",
+        src: "/testImgs/swipeHor0/vangogh-starryNight.jpg",
         typeSrc: "horizontal",
         name: "звездная ночь",
         description: "текст о произведении",
         isCorrect: false 
       },
       { 
-        src: "/testImgs/swipeHor1/malevich-kosar.jpg",
+        src: "/testImgs/swipeHor0/malevich-kosar.jpg",
         typeSrc: "vertical",
         name: "косарь",
         description: "текст о произведении",
@@ -34,14 +34,14 @@ const inputInfo = [
   //   question: "второй вопрос",
   //   choices: [
   //     { 
-  //       src: "/testImgs/swipeHor1/malevich-cowViolin.jpg", 
+  //       src: "/testImgs/swipeHor0/malevich-cowViolin.jpg", 
   //       typeSrc: "vertical",
   //       name: "первая картина",
   //       description: "текст о произведении",
   //       isCorrect: false 
   //     },
   //     { 
-  //       src: "/testImgs/swipeHor1/malevich-portrait.jpg",
+  //       src: "/testImgs/swipeHor0/malevich-portrait.jpg",
   //       typeSrc: "vertical",
   //       name: "вторая картина",
   //       description: "текст о произведении",

@@ -30,6 +30,7 @@ export default async function TopicPage({params}){
     const circleColor = completed ? "bg-ac-lime-300" : "bg-ac-yellow-400"
     const textButton = completed ? "пройти еще раз" : "Начать тест"
 
+    const linkToTest = testData.linkToTest
     const header = testData.title
     const title = testData.title
     const desc = testData.desc
@@ -52,7 +53,7 @@ export default async function TopicPage({params}){
                 <p className="font-main-text text-ac-gray-light/80 pt-1 h-[36px] line-clamp-2">{desc}</p>
             </div>
             <div className="flex items-center gap-1 pt-4">
-                <Button1 link={"/testTypes/pickPainting" ?? "#"}>{textButton}</Button1>
+                <Button1 link={linkToTest ?? "#"}>{textButton}</Button1>
                 <div className={`h-11 aspect-square ${circleColor} rounded-full`}></div>
             </div>
         </div>

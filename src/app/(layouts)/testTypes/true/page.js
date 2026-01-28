@@ -12,21 +12,21 @@ const ChoiceLR = {
 ChoiceLR.questions = [
   {
     slug: "question1",
-    src: "/testImgs/trueTest1/black-square.jpg",
+    src: "/testImgs/trueTest0/black-square.jpg",
     choiceD: ChoiceLR.choiceVariants.rightText,
     isTrue: true, // right - true
     explanation: "текст почему неверно 1",
   },
   {
     slug: "question2",
-    src: "/testImgs/trueTest1/vangogh.jpg",
+    src: "/testImgs/trueTest0/vangogh.jpg",
     choiceD: ChoiceLR.choiceVariants.leftText,
     isTrue: false, // left - lie
     explanation: "текст почему неверно 2",
   },
   // {
   //   slug: "question3",
-  //   src: "/testImgs/trueTest1/vangogh1.jpg",
+  //   src: "/testImgs/trueTest0/vangogh1.jpg",
   //   choiceD: ChoiceLR.choiceVariants.leftText,
   //   isTrue: false, // left - lie
   //   explanation: "текст почему неверно 3",

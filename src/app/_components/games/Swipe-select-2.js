@@ -150,7 +150,7 @@ export default function SwipeSelect1({ inputInfo, link }) {
                     {showNextButton && <h2 className={`font-button ${current.choices[activeIndex].isCorrect ? "text-ac-lime-300" : "text-ac-orange-600"} `}>
                         {choices[activeIndex].name}
                     </h2>}
-                    {showNextButton && !current.choices[activeIndex].isCorrect && <p className="text-[12px] leading-[14px] text-ac-orange-600 mt-1">
+                    {showNextButton && !current.choices[activeIndex].isCorrect && <p className="text-[12px] leading-[14px] text-ac-gray mt-1">
                         {choices[activeIndex].description}
                     </p>}
                 </div>
@@ -164,7 +164,7 @@ export default function SwipeSelect1({ inputInfo, link }) {
 function ImageContainer({ choice }) {
     const isVertical = choice.typeSrc === "vertical"
     return (
-        <div className={`${isVertical ? "aspect-[220/370] h-[44vh]" : "aspect-[320/260] h-[30vh]"} drop-shadow-lg drop-shadow-ac-gray-light/60`}>
+        <div className={`${isVertical ? "aspect-[220/360] h-[44vh]" : "aspect-[320/260] h-[30vh]"} drop-shadow-lg drop-shadow-ac-gray-light/60`}>
             <Image
                 src={choice.src}
                 alt={choice.name}

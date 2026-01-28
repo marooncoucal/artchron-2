@@ -1,18 +1,18 @@
 import PuzzleBoard from "@/app/_components/games/Puzzle-rev"
 
 const images = [
-  { src: "/testImgs/puzzle1/01.jpg"},
-  { src: "/testImgs/puzzle1//02.jpg"},
-  { src: "/testImgs/puzzle1//03.jpg"},
-  { src: "/testImgs/puzzle1//04.jpg"},
-  { src: "/testImgs/puzzle1//05.jpg"},
-  { src: "/testImgs/puzzle1//06.jpg"},
-  { src: "/testImgs/puzzle1//07.jpg"},
-  { src: "/testImgs/puzzle1//08.jpg"},
-  { src: "/testImgs/puzzle1//09.jpg"},
-  { src: "/testImgs/puzzle1//10.jpg"},
-  { src: "/testImgs/puzzle1//11.jpg"},
-  { src: "/testImgs/puzzle1//12.jpg"}
+  { src: "/testImgs/puzzle0/01.jpg"},
+  { src: "/testImgs/puzzle0//02.jpg"},
+  { src: "/testImgs/puzzle0//03.jpg"},
+  { src: "/testImgs/puzzle0//04.jpg"},
+  { src: "/testImgs/puzzle0//05.jpg"},
+  { src: "/testImgs/puzzle0//06.jpg"},
+  { src: "/testImgs/puzzle0//07.jpg"},
+  { src: "/testImgs/puzzle0//08.jpg"},
+  { src: "/testImgs/puzzle0//09.jpg"},
+  { src: "/testImgs/puzzle0//10.jpg"},
+  { src: "/testImgs/puzzle0//11.jpg"},
+  { src: "/testImgs/puzzle0//12.jpg"}
 ]
 
 export default function PuzzlePage() {

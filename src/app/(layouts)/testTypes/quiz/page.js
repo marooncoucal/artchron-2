@@ -18,7 +18,7 @@ const quizInfo = [
   {
     slug: "question1",
     type: "textField", // где вопрос текстовый
-    src: "/testImgs/quiz2/src1.jpg", // или задник или основная к вопросу (по типу)
+    src: "/testImgs/quiz0/src1.jpg", // или задник или основная к вопросу (по типу)
     question: "В каких годах зародился Импрессионизм?",
     choices: [
       { text: "1790", isCorrect: false},
@@ -30,7 +30,7 @@ const quizInfo = [
   {
     slug: "question2",
     type: "paintings", // где вопрос "чья картина"
-    src: "/testImgs/quiz2/src2.jpg", // или задник или основная к вопросу (по типу)
+    src: "/testImgs/quiz0/src2.jpg", // или задник или основная к вопросу (по типу)
     question: "Картина «Синие танцовщицы» принадлежит...",
     choices: [
       { text: "Камилю Писсарро", isCorrect: false},
@@ -47,9 +47,6 @@ export default function QuizPage() {
       <QuizAC questions={quizInfo} 
         link={"/testTypes/swipeSelect"}
       />
-      {/* <Quiz /> */}
-      {/* <Podbor /> */}
     </>
-
   ) 
 }

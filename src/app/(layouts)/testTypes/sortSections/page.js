@@ -11,31 +11,31 @@ const inputInfo = {
 
 inputInfo.questions = [
   // {
-  //   src: "/testImgs/sortSections1/malevich-blackSquare.jpg",
+  //   src: "/testImgs/sortSections0/malevich-blackSquare.jpg",
   //   section: inputInfo.sortSections.author1,
   // },
   {
-    src: "/testImgs/sortSections1/malevich-cowViolin.jpg",
+    src: "/testImgs/sortSections0/malevich-cowViolin.jpg",
     section: inputInfo.sortSections.author1,
   },
   {
-    src: "/testImgs/sortSections1/malevich-kosar.jpg",
+    src: "/testImgs/sortSections0/malevich-kosar.jpg",
     section: inputInfo.sortSections.author1,
   },
   // {
-  //   src: "/testImgs/sortSections1/malevich-portrait.jpg",
+  //   src: "/testImgs/sortSections0/malevich-portrait.jpg",
   //   section: inputInfo.sortSections.author1,
   // },
   // {
-  //   src: "/testImgs/sortSections1/vangogh-portrait.jpg",
+  //   src: "/testImgs/sortSections0/vangogh-portrait.jpg",
   //   section: inputInfo.sortSections.author2,
   // },
   // {
-  //   src: "/testImgs/sortSections1/vangogh-starryNight.jpg",
+  //   src: "/testImgs/sortSections0/vangogh-starryNight.jpg",
   //   section: inputInfo.sortSections.author2,
   // },
   {
-    src: "/testImgs/sortSections1/vangogh-terrace.jpg",
+    src: "/testImgs/sortSections0/vangogh-terrace.jpg",
     section: inputInfo.sortSections.author2,
   },
 ]

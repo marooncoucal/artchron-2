@@ -6,7 +6,7 @@ const variantsInfo = [
     question: "Какая из картин принадлежит Камиля Писсарро?",
     choices: [
       { 
-        src: "/testImgs/pickPainting1/zhatva-fuko.jpg", 
+        src: "/testImgs/pickPainting0/zhatva-fuko.jpg", 
         typeSrc: "horizontal",
         name: "Жатва в Монфуко",
         author: "Камиля Писсарро",
@@ -14,7 +14,7 @@ const variantsInfo = [
         isCorrect: true
       }, // правильный true, остальные false
       { 
-        src: "/testImgs/pickPainting1/malevich-kosar.jpg", 
+        src: "/testImgs/pickPainting0/malevich-kosar.jpg", 
         typeSrc: "vertical",
         name: "Косарь",
         author: "Казимир Малевич",
@@ -22,7 +22,7 @@ const variantsInfo = [
         isCorrect: false 
       },
       { 
-        src: "/testImgs/pickPainting1/malevich-portrait.jpg",
+        src: "/testImgs/pickPainting0/malevich-portrait.jpg",
         typeSrc: "vertical",
         name: "Автопортрет",
         author: "Казимир Малевич",
@@ -30,7 +30,7 @@ const variantsInfo = [
         isCorrect: false 
       },
       { 
-        src: "/testImgs/pickPainting1/vangogh-starryNight.jpg", 
+        src: "/testImgs/pickPainting0/vangogh-starryNight.jpg", 
         typeSrc: "horizontal",
         name: "Звездная ночь",
         author: "Ван Гог",
@@ -44,7 +44,7 @@ const variantsInfo = [
     question: "Где ночная терасса?",
     choices: [
       { 
-        src: "/testImgs/pickPainting1/vangogh-portrait.jpg", 
+        src: "/testImgs/pickPainting0/vangogh-portrait.jpg", 
         typeSrc: "horizontal",
         name: "Автопортрет",
         author: "Ван Гог",
@@ -52,7 +52,7 @@ const variantsInfo = [
         isCorrect: false 
       },
       { 
-        src: "/testImgs/pickPainting1/vangogh-terrace.jpg", 
+        src: "/testImgs/pickPainting0/vangogh-terrace.jpg", 
         typeSrc: "vertical",
         name: "Ночная Терасса",
         author: "Ван Гог",
@@ -60,7 +60,7 @@ const variantsInfo = [
         isCorrect: true 
       }, // правильный true, остальные false
       { 
-        src: "/testImgs/pickPainting1/malevich-cowViolin.jpg", 
+        src: "/testImgs/pickPainting0/malevich-cowViolin.jpg", 
         typeSrc: "vertical",
         name: "Корова и скрипка",
         author: "Казимир Малевич",
@@ -68,7 +68,7 @@ const variantsInfo = [
         isCorrect: false 
       },
       { 
-        src: "/testImgs/pickPainting1/malevich-blackSquare.jpg",
+        src: "/testImgs/pickPainting0/malevich-blackSquare.jpg",
         typeSrc: "horizontal",
         name: "Черный квадрат",
         author: "Казимир Малевич",

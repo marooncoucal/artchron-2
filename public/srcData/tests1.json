@@ -8,6 +8,7 @@
                 {
                     "testSlug" : "impressionism-test1",
                     "link": "/categories/sections/topics/firstScreenTest",
+                    "linkToTest": "/test-1/pickPainting",
                     "title": "Тест 1",
                     "desc": "11 вопросов",
                     "src": "/img/star-bg.png"
@@ -15,6 +16,7 @@
                 {
                     "testSlug" : "impressionism-test2",
                     "link": "/categories/sections/topics/firstScreenTest",
+                    "linkToTest": "/test-1/pickPainting",
                     "title": "Тест 2",
                     "desc": "9 вопросов",
                     "src": "/img/plashki/test1/2.jpg"
@@ -22,6 +24,7 @@
                 {
                     "testSlug" : "impressionism-test3",
                     "link": "/categories/sections/topics/firstScreenTest",
+                    "linkToTest": "/testTypes/pickPainting",
                     "title": "Тест 3",
                     "desc": "13 вопросов",
                     "src": "/img/plashki/test1/3.jpg"
@@ -29,6 +32,7 @@
                 {
                     "testSlug" : "impressionism-test4",
                     "link": "/categories/sections/topics/firstScreenTest",
+                    "linkToTest": "/testTypes/sortSections",
                     "title": "Тест 4",
                     "desc": "10 вопросов",
                     "src": "/img/star-bg.png"
@@ -36,6 +40,7 @@
                 {
                     "testSlug" : "impressionism-test5",
                     "link": "/categories/sections/topics/firstScreenTest",
+                    "linkToTest": "/testTypes/sortSections",
                     "title": "Тест 5",
                     "desc": "8 вопросов",
                     "src": "/img/plashki/test1/5.jpg"
@@ -50,6 +55,7 @@
                 {
                     "testSlug" : "post-impressionism-test1",
                     "link": "/categories/sections/topics/firstScreenTest",
+                    "linkToTest": "/test-1/pickPainting",
                     "title": "Тест 1",
                     "desc": "12 вопросов",
                     "src": "/img/plashki/test2/1.jpg"
@@ -57,6 +63,7 @@
                 {
                     "testSlug" : "post-impressionism-test2",
                     "link": "/categories/sections/topics/firstScreenTest",
+                    "linkToTest": "/test-1/pickPainting",
                     "title": "Тест 2",
                     "desc": "14 вопросов",
                     "src": "/img/star-bg.png"
@@ -64,6 +71,7 @@
                 {
                     "testSlug" : "post-impressionism-test3",
                     "link": "/categories/sections/topics/firstScreenTest",
+                    "linkToTest": "/testTypes/pickPainting",
                     "title": "Тест 3",
                     "desc": "7 вопросов",
                     "src": "/img/plashki/test2/3.jpg"
@@ -71,6 +79,7 @@
                 {
                     "testSlug" : "post-impressionism-test4",
                     "link": "/categories/sections/topics/firstScreenTest",
+                    "linkToTest": "/testTypes/sortSections",
                     "title": "Тест 4",
                     "desc": "11 вопросов",
                     "src": "/img/plashki/test2/4.jpg"
@@ -78,6 +87,7 @@
                 {
                     "testSlug" : "post-impressionism-test5",
                     "link": "/categories/sections/topics/firstScreenTest",
+                    "linkToTest": "/testTypes/sortSections",
                     "title": "Тест 5",
                     "desc": "9 вопросов",
                     "src": "/img/star-bg.png"
@@ -85,6 +95,7 @@
                 {
                     "testSlug" : "post-impressionism-test6",
                     "link": "/categories/sections/topics/firstScreenTest",
+                    "linkToTest": "/testTypes/sortSections",
                     "title": "Тест 6",
                     "desc": "14 вопросов",
                     "src": "/img/star-bg.png"
