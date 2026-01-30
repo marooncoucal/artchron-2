@@ -173,8 +173,7 @@ function ImageContainer({ choice }) {
         aspectHeight = choice.aspectHeight ?? "260"
         aspectWidth = choice.aspectWidth ?? "320"
     }
-    let aspectR = "aspect-[" + aspectWidth + "/" + aspectHeight + "]"
-    console.log(aspectR)
+    // let aspectR = "aspect-[" + aspectWidth + "/" + aspectHeight + "]"
     return (
         <div className={`${isVertical ? 'h-[44vh]' : 'h-[30vh]'} drop-shadow-lg drop-shadow-ac-gray-light/60`}
             style={{ aspectRatio: `${aspectWidth}/${aspectHeight}` }}
