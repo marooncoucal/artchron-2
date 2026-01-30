@@ -14,13 +14,13 @@ async function getTopic(){
 }
 
 export default async function TopicPage({params}){
-    const { topicSlug, testSlug } = await params
+    const { topicSlug, testScreenSlug } = await params
     const topicInfo =  await getTopic()
     const topic = topicInfo.quizes.find(q => q.topicSlug === topicSlug)
     if (!topic) {
         return <div>topic not found</div>
     }
-    const testData = topic.topics.find(t => t.testSlug === testSlug)
+    const testData = topic.topics.find(t => t.testScreenSlug === testScreenSlug)
     if (!testData) {
         return <div>Test not found</div>
     }

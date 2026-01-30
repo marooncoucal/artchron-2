@@ -6,7 +6,7 @@
             "link": "/categories/sections/topics/",
             "topics":[
                 {
-                    "testSlug" : "impressionism-test1",
+                    "testScreenSlug" : "impressionism-test1",
                     "link": "/categories/sections/topics/firstScreenTest",
                     "linkToTest": "/test-1/pickPainting",
                     "title": "Тест 1",
@@ -14,7 +14,7 @@
                     "src": "/img/star-bg.png"
                 },
                 {
-                    "testSlug" : "impressionism-test2",
+                    "testScreenSlug" : "impressionism-test2",
                     "link": "/categories/sections/topics/firstScreenTest",
                     "linkToTest": "/test-1/pickPainting",
                     "title": "Тест 2",
@@ -22,7 +22,7 @@
                     "src": "/img/plashki/test1/2.jpg"
                 },
                 {
-                    "testSlug" : "impressionism-test3",
+                    "testScreenSlug" : "impressionism-test3",
                     "link": "/categories/sections/topics/firstScreenTest",
                     "linkToTest": "/testTypes/pickPainting",
                     "title": "Тест 3",
@@ -30,7 +30,7 @@
                     "src": "/img/plashki/test1/3.jpg"
                 },
                 {
-                    "testSlug" : "impressionism-test4",
+                    "testScreenSlug" : "impressionism-test4",
                     "link": "/categories/sections/topics/firstScreenTest",
                     "linkToTest": "/testTypes/sortSections",
                     "title": "Тест 4",
@@ -38,7 +38,7 @@
                     "src": "/img/star-bg.png"
                 },
                 {
-                    "testSlug" : "impressionism-test5",
+                    "testScreenSlug" : "impressionism-test5",
                     "link": "/categories/sections/topics/firstScreenTest",
                     "linkToTest": "/testTypes/sortSections",
                     "title": "Тест 5",
@@ -53,7 +53,7 @@
             "link": "/categories/sections/topics/",
             "topics":[
                 {
-                    "testSlug" : "post-impressionism-test1",
+                    "testScreenSlug" : "post-impressionism-test1",
                     "link": "/categories/sections/topics/firstScreenTest",
                     "linkToTest": "/test-1/pickPainting",
                     "title": "Тест 1",
@@ -61,7 +61,7 @@
                     "src": "/img/plashki/test2/1.jpg"
                 },
                 {
-                    "testSlug" : "post-impressionism-test2",
+                    "testScreenSlug" : "post-impressionism-test2",
                     "link": "/categories/sections/topics/firstScreenTest",
                     "linkToTest": "/test-1/pickPainting",
                     "title": "Тест 2",
@@ -69,7 +69,7 @@
                     "src": "/img/star-bg.png"
                 },
                 {
-                    "testSlug" : "post-impressionism-test3",
+                    "testScreenSlug" : "post-impressionism-test3",
                     "link": "/categories/sections/topics/firstScreenTest",
                     "linkToTest": "/testTypes/pickPainting",
                     "title": "Тест 3",
@@ -77,7 +77,7 @@
                     "src": "/img/plashki/test2/3.jpg"
                 },
                 {
-                    "testSlug" : "post-impressionism-test4",
+                    "testScreenSlug" : "post-impressionism-test4",
                     "link": "/categories/sections/topics/firstScreenTest",
                     "linkToTest": "/testTypes/sortSections",
                     "title": "Тест 4",
@@ -85,7 +85,7 @@
                     "src": "/img/plashki/test2/4.jpg"
                 },
                 {
-                    "testSlug" : "post-impressionism-test5",
+                    "testScreenSlug" : "post-impressionism-test5",
                     "link": "/categories/sections/topics/firstScreenTest",
                     "linkToTest": "/testTypes/sortSections",
                     "title": "Тест 5",
@@ -93,7 +93,7 @@
                     "src": "/img/star-bg.png"
                 },
                 {
-                    "testSlug" : "post-impressionism-test6",
+                    "testScreenSlug" : "post-impressionism-test6",
                     "link": "/categories/sections/topics/firstScreenTest",
                     "linkToTest": "/testTypes/sortSections",
                     "title": "Тест 6",

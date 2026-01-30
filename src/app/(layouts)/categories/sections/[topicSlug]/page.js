@@ -32,7 +32,7 @@ export default async function SectionTopics({params}){
             {tests.map((t, index) => (
                 <CircleHead
                     key={index} 
-                    link={`/categories/sections/${topicSlug}/firstScreenTest/${t.testSlug}` ?? "#"} 
+                    link={`/categories/sections/${topicSlug}/firstScreenTest/${t.testScreenSlug}` ?? "#"} 
                     src={t.src ?? imgNotFound} 
                     title={t.title} 
                     desc={t.desc}
